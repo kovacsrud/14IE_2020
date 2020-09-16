@@ -21,6 +21,34 @@ namespace LottoJatek
             // Nem lehet két egyforma nyerőszám.
             // A sorsolás után állapítsuk meg, hány találat volt.
 
+            Console.Write("Hány számot húzunk:");
+            var hanySzam = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Mennyiből húzunk:");
+            var osszSzam= Convert.ToInt32(Console.ReadLine());
+
+            var tippek = new int[hanySzam];
+            var nyeroSzamok = new int[hanySzam];
+
+            var talalatok = 0;
+
+            //tippelés
+
+            for (int i = 0; i < hanySzam; i++)
+            {
+                Console.Write($"{i+1}.tipp");
+                var temp = Convert.ToInt32(Console.ReadLine());
+                while (temp<1 || temp>osszSzam || tippek.Contains(temp))
+                {
+                    Console.Write("Rossz tipp! Újra:");
+                    temp = Convert.ToInt32(Console.ReadLine());
+
+                }
+                tippek[i] = temp;
+            }
+
+
+
 
 
             Console.ReadKey();
