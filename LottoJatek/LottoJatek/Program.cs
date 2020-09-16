@@ -25,20 +25,21 @@ namespace LottoJatek
             var hanySzam = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Mennyiből húzunk:");
-            var osszSzam= Convert.ToInt32(Console.ReadLine());
+            var osszSzam = Convert.ToInt32(Console.ReadLine());
 
             var tippek = new int[hanySzam];
             var nyeroSzamok = new int[hanySzam];
 
             var talalatok = 0;
+            Random rand = new Random();
 
             //tippelés
 
             for (int i = 0; i < hanySzam; i++)
             {
-                Console.Write($"{i+1}.tipp");
+                Console.Write($"{i + 1}.tipp:");
                 var temp = Convert.ToInt32(Console.ReadLine());
-                while (temp<1 || temp>osszSzam || tippek.Contains(temp))
+                while (temp < 1 || temp > osszSzam || tippek.Contains(temp))
                 {
                     Console.Write("Rossz tipp! Újra:");
                     temp = Convert.ToInt32(Console.ReadLine());
@@ -47,11 +48,34 @@ namespace LottoJatek
                 tippek[i] = temp;
             }
 
+            TombLista(tippek);
 
+            //sorsolás
+
+            for (int i = 0; i < hanySzam; i++)
+            {
+                var temp = rand.Next(1, osszSzam + 1);
+                while (nyeroSzamok.Contains(temp))
+                {
+                    temp = rand.Next(1, osszSzam + 1);
+                }
+                nyeroSzamok[i] = temp;
+            }
+
+            TombLista(nyeroSzamok);
 
 
 
             Console.ReadKey();
+        }
+
+        private static void TombLista(int[] tippek)
+        {
+            for (int i = 0; i < tippek.Length; i++)
+            {
+                Console.Write(tippek[i] + " ");
+            }
+            Console.WriteLine();
         }
     }
 }
