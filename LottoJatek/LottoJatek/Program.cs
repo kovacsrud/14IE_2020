@@ -33,46 +33,50 @@ namespace LottoJatek
             var talalatok = 0;
             Random rand = new Random();
 
-            //tippelés
+            do {
+                //tippelés
 
-            for (int i = 0; i < hanySzam; i++)
-            {
-                Console.Write($"{i + 1}.tipp:");
-                var temp = Convert.ToInt32(Console.ReadLine());
-                while (temp < 1 || temp > osszSzam || tippek.Contains(temp))
+                for (int i = 0; i < hanySzam; i++)
                 {
-                    Console.Write("Rossz tipp! Újra:");
-                    temp = Convert.ToInt32(Console.ReadLine());
+                    Console.Write($"{i + 1}.tipp:");
+                    var temp = Convert.ToInt32(Console.ReadLine());
+                    while (temp < 1 || temp > osszSzam || tippek.Contains(temp))
+                    {
+                        Console.Write("Rossz tipp! Újra:");
+                        temp = Convert.ToInt32(Console.ReadLine());
 
+                    }
+                    tippek[i] = temp;
                 }
-                tippek[i] = temp;
-            }
 
-            TombLista(tippek);
+                TombLista(tippek);
 
-            //sorsolás
+                //sorsolás
 
-            for (int i = 0; i < hanySzam; i++)
-            {
-                var temp = rand.Next(1, osszSzam + 1);
-                while (nyeroSzamok.Contains(temp))
+                for (int i = 0; i < hanySzam; i++)
                 {
-                    temp = rand.Next(1, osszSzam + 1);
+                    var temp = rand.Next(1, osszSzam + 1);
+                    while (nyeroSzamok.Contains(temp))
+                    {
+                        temp = rand.Next(1, osszSzam + 1);
+                    }
+                    nyeroSzamok[i] = temp;
                 }
-                nyeroSzamok[i] = temp;
-            }
 
-            TombLista(nyeroSzamok);
+                TombLista(nyeroSzamok);
 
-            for (int i = 0; i < tippek.Length; i++)
-            {
-                if (nyeroSzamok.Contains(tippek[i]))
+                for (int i = 0; i < tippek.Length; i++)
                 {
-                    talalatok++;
+                    if (nyeroSzamok.Contains(tippek[i]))
+                    {
+                        talalatok++;
+                    }
                 }
-            }
 
-            Console.WriteLine($"Találat:{talalatok}");
+                Console.WriteLine($"Találat:{talalatok}");
+                Console.WriteLine("új játék? y/n");
+
+            } while (Console.ReadKey(true).Key==ConsoleKey.Y);
 
             Console.ReadKey();
         }
