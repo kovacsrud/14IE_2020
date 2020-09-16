@@ -64,7 +64,15 @@ namespace LottoJatek
 
             TombLista(nyeroSzamok);
 
+            for (int i = 0; i < tippek.Length; i++)
+            {
+                if (nyeroSzamok.Contains(tippek[i]))
+                {
+                    talalatok++;
+                }
+            }
 
+            Console.WriteLine($"Találat:{talalatok}");
 
             Console.ReadKey();
         }
