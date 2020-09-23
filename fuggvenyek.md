@@ -1,0 +1,2 @@
+# Függvények (alprogramok)
+
