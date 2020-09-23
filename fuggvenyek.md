@@ -61,4 +61,29 @@ static double Osszead(double a,double b)
             return a + b;
         }
 ```
+Érték és cím szerinti paraméterátadás
 
+Érték szerinti paraméterátadáskor az átadott változó értéke nem változik meg, cím szerinti átadáskor megváltozhat, hiszen ilyenkor a paraméter referenciáját adjuk át, és a változó értéke a referencián keresztül módosítható.
+
+```C#
+static void ErtekSzerint(int a)
+        {
+            a = a * a;
+        }
+
+static void CimSzerint(ref int a)
+        {
+            a = a * a;
+        }
+```
+A fenti függvények hívása:
+```C#
+   int a = 3;
+   ErtekSzerint(a);
+   Console.WriteLine(a);
+   //3
+
+   CimSzerint(ref a);
+   Console.WriteLine(a);
+   //9
+```
