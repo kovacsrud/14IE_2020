@@ -12,6 +12,19 @@ namespace AllatOOP
         private string nev;
         private int suly;
 
+        //konstruktor, példányosításkor automatikusan lefut
+        public Allat()
+        {
+
+        }
+
+        public Allat(string nev,int suly)
+        {
+            this.nev = nev;
+            this.suly = suly;
+        }
+
+
         public void Eszik()
         {
             Console.WriteLine("Az állat eszik");

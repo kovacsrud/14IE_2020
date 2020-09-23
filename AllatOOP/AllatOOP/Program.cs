@@ -11,11 +11,10 @@ namespace AllatOOP
         static void Main(string[] args)
         {
 
-            Allat allat = new Allat();
-            Allat masikAllat = new Allat();
+            Allat allat = new Allat("Ubul",16);
+            Allat masikAllat = new Allat("Zénó",8);
 
-            allat.SetNev("Ubul");
-
+            Allat allat2 = new Allat();
 
             allat.Eszik();
             allat.Mozog();
@@ -23,7 +22,7 @@ namespace AllatOOP
             Console.WriteLine(allat.GetNev());
 
             masikAllat.Mozog();
-
+            Console.WriteLine(masikAllat.GetNev());
 
             Console.ReadKey();
         }
