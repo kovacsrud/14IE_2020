@@ -18,6 +18,7 @@ namespace AllatOOP
 
         }
 
+        //paraméteres konstruktor
         public Allat(string nev,int suly)
         {
             this.nev = nev;
@@ -25,12 +26,12 @@ namespace AllatOOP
         }
 
 
-        public void Eszik()
+        public virtual void Eszik()
         {
             Console.WriteLine("Az állat eszik");
         }
 
-        public void Mozog()
+        public virtual void Mozog()
         {
             Console.WriteLine("Az állat mozog");
         }

@@ -24,6 +24,16 @@ namespace AllatOOP
             masikAllat.Mozog();
             Console.WriteLine(masikAllat.GetNev());
 
+            Kutya kutya = new Kutya("komondor",60,"Zénó",55);
+
+            kutya.Eszik();
+            kutya.Mozog();
+            kutya.Alszik();
+            kutya.Ugat();
+            Console.WriteLine(kutya.GetNev());
+
+            Console.WriteLine(kutya);
+
             Console.ReadKey();
         }
     }
