@@ -34,7 +34,24 @@ namespace Emberek
             }
 
             Console.WriteLine($"Lista hossza:{emberek.Count}");
-        
+
+            foreach (var i in emberek)
+            {
+                Console.WriteLine($"{i.Vezeteknev},{i.Keresztnev},{i.SzulEv},{i.Szulhely}");
+            }
+
+
+            //Adott feltételnek megfelelő adatok kinyerése
+            //a listából
+
+            var kosak = emberek.FindAll(x=>x.Vezeteknev=="Kósa" && x.Keresztnev=="László");
+
+            foreach (var i in kosak)
+            {
+                Console.WriteLine($"{i.Vezeteknev},{i.Keresztnev},{i.SzulEv},{i.Szulhely}");
+            }
+
+
 
             Console.ReadKey();
         }
