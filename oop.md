@@ -15,7 +15,9 @@ Az objektumnak vannak metódusai (függvények, melyeket kérésre az objektum v
 * szín                  *
 *************************
 *eszik()                *
+*                       *
 *mozog()                *
+*                       *
 *alszik()               *
 *                       *
 *                       *
