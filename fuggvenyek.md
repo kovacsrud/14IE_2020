@@ -47,3 +47,18 @@ static void Kiir(string szoveg,int hanyszor)
             }
         }
 ```
+
+A visszatérési értékkel rendelkező függvény valamilyen értéket szolgáltat. Önmagában nem használható, csak függvényhívás vagy értékadás részeként. Itt is lehet túlterhelést alkalmazni, a paraméterlisták megegyezhetnek, de a visszatérési értéknek különböznie kell.
+
+```C#
+ static int Osszead(int a,int b)
+        {
+            return a + b;
+        }
+
+static double Osszead(double a,double b)
+        {
+            return a + b;
+        }
+```
+
