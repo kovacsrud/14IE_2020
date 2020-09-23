@@ -10,6 +10,9 @@ namespace Emberek
     {
         static void Main(string[] args)
         {
+            Ember ember = new Ember("Zöld", "Géza", 170, "Elek", 1989);
+
+            Console.WriteLine($"{ember.Vezeteknev},{ember.Keresztnev}");
 
             Console.ReadKey();
         }
