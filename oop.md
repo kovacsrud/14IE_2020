@@ -28,3 +28,6 @@ Az objektumnak vannak metódusai (függvények, melyeket kérésre az objektum v
 *************************
 
 Az objektum deklarációja az osztály (class). Az osztályból a program futtatásakor példányt készítünk, a programban a példányt használjuk.
+
+Az osztály működésének alapelve, hogy az osztály a külvilág elől elrejti a "belügyeit". Ez az ún. bezártság elve.
+A bezártság elve azt jelenti, hogy az osztály adatait nem lehet közvetlenül elérni, hanem csakis metódusokon keresztül. Másképpen fogalmazva az osztályt csak az interfészén keresztül lehet elérni.
