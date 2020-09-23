@@ -14,7 +14,24 @@ namespace Emberek
         public string Keresztnev { get; set; }
         public int Magassag { get; set; }
         public string Szulhely { get; set; }
-        public int SzulEv { get; set; }
+
+        private int szulev;
+        public int SzulEv {
+
+            get {
+                return szulev;
+            }
+            set {
+                if (value>2020)
+                {
+                    szulev = 2020;
+                } else
+                {
+                    szulev = value;
+                }
+            }
+
+        }
 
 
         public Ember(string vezeteknev, string keresztnev, int magassag, string szulhely, int szulEv)
