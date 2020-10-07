@@ -27,12 +27,12 @@ namespace Kivetelek
                 }
                 
 
-                throw new ArithmeticException();
+                throw new RosszAdat("Hibás adatot adtál meg");
 
             }
-            catch (NullReferenceException ex)
+            catch (RosszAdat ex)
             {
-                Console.WriteLine("Null hiba");
+                Console.WriteLine(ex.Message);
             }
             catch (ArgumentException ex)
             {
