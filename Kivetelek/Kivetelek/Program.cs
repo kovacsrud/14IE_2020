@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Kivetelek
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);                
+                Console.WriteLine(ex.Source);                
             }
             finally
             {
@@ -49,6 +50,7 @@ namespace Kivetelek
                 Console.WriteLine("Ez a kód mindig lefut");
             }
 
+            
 
             Console.WriteLine("try-catch utáni programrész");
             Console.ReadKey();
