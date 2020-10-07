@@ -37,6 +37,14 @@ namespace Idojaras
 
             Console.WriteLine($"{legmelegebb.Honap}.{legmelegebb.Nap}-{legmelegebb.Ora},{legmelegebb.Homerseklet}");
 
+            //Évenként hány sor adat van a listában
+            var evenkenti = adatok.IdojarasAdatLista.GroupBy(x=>new { x.Ev,x.Honap }).OrderBy(x=>x.Key.Ev).ThenBy(x=>x.Key.Honap);
+
+            foreach (var i in evenkenti)
+            {
+                Console.WriteLine($"{i.Key.Ev},{i.Key.Honap},{i.Average(x=>x.Homerseklet)}");
+            }
+
             Console.ReadKey();
         }
     }
