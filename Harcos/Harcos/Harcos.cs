@@ -43,6 +43,22 @@ namespace Harcos
             this.harciero = harciero;
         }
 
+        public override string ToString()
+        {
+            return $"Név:{nev},Életerő:{eletero},Harci erő:{harciero}";
+        }
 
+        public bool Harcol(Harcos ellenfel)
+        {
+            this.eletero -= ellenfel.Harciero;
+            ellenfel.eletero -= this.Harciero;
+            if (ellenfel.Eletero<=0 || this.Eletero<=0)
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
     }
 }
