@@ -11,6 +11,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,8 +19,10 @@
         </Grid.ColumnDefinitions>
         <Label Content="A értéke:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="B értéke:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+        <Label Content="Eredmény:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
         <TextBox x:Name="textboxA" Grid.Column="1" VerticalAlignment="Center" />
         <TextBox x:Name="textboxB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-        <Button x:Name="buttonSzamol" Content="Számol" Grid.Row="2" Margin="20" Grid.ColumnSpan="2" />
+        <Label Content="" x:Name="labelEredmeny" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="buttonSzamol" Content="Számol" Grid.Row="3" Margin="20" Grid.ColumnSpan="2" Click="buttonSzamol_Click" />
     </Grid>
 </Window>

@@ -24,5 +24,21 @@ namespace WpfSzamolas
         {
             InitializeComponent();
         }
+
+        private void buttonSzamol_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var a = Convert.ToInt32(textboxA.Text);
+                var b = Convert.ToInt32(textboxB.Text);
+                var c = a * b;
+                labelEredmeny.Content = c;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Számot kell megadni!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+        }
     }
 }
