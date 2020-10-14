@@ -20,9 +20,9 @@
         <Label Content="A értéke:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label Content="B értéke:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
         <Label Content="Eredmény:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-        <TextBox x:Name="textboxA" Grid.Column="1" VerticalAlignment="Center" />
-        <TextBox x:Name="textboxB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+        <TextBox x:Name="textboxA" Width="150" Grid.Column="1" VerticalAlignment="Center" />
+        <TextBox x:Name="textboxB" Width="150" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
         <Label Content="" x:Name="labelEredmeny" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-        <Button x:Name="buttonSzamol" Content="Számol" Grid.Row="3" Margin="20" Grid.ColumnSpan="2" Click="buttonSzamol_Click" />
+        <Button x:Name="buttonSzamol" Content="Számol" Grid.Row="3" Margin="20" Grid.ColumnSpan="2" Click="buttonSzamol_Click" MinHeight="30" MaxHeight="30" MinWidth="100" MaxWidth="100" />
     </Grid>
 </Window>
