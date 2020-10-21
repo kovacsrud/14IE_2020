@@ -18,6 +18,7 @@ namespace Jarmuvek
                 if (i.GetType()==typeof(Robogo))
                 {
                     Robogo robogo = (Robogo)i;
+                    
                     Console.WriteLine(robogo.HaladhatItt(40));
                 }
                 if (i.GetType() == typeof(AudiS8))
