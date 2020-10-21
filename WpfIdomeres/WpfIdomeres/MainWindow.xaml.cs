@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,12 +23,25 @@ namespace WpfIdomeres
     public partial class MainWindow : Window
     {
         Stopwatch stopper;
+        Random rand;
 
         public MainWindow()
         {
             InitializeComponent();
             stopper = new Stopwatch();
             buttonStartStop.Content = "Start";
+            rand = new Random();
+            labelFelirat.Content = "Katt!";
+            labelFelirat.Visibility = Visibility.Hidden;
+
+        }
+
+        private void Reakcio()
+        {
+            labelFelirat.Visibility = Visibility.Hidden;
+            Thread.Sleep(rand.Next(1000, 5000));
+            labelFelirat.Visibility = Visibility.Visible;
+            stopper.Start();
            
         }
 
@@ -41,7 +55,9 @@ namespace WpfIdomeres
                 buttonStartStop.Content = "Start";
             } else
             {
-                stopper.Start();
+                //stopper.Start();
+                Reakcio();
+               
                 buttonStartStop.Content = "Stop";
             }
         }
