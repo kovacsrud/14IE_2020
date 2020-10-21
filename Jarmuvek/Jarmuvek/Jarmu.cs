@@ -19,6 +19,8 @@ namespace Jarmuvek
 
         public abstract bool GyorshajtottE(int sebessegkorlat);
 
+        
+
         public override string ToString()
         {
             return $"{rendszam}-{sebesseg}";
