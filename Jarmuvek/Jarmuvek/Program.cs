@@ -17,7 +17,8 @@ namespace Jarmuvek
                 Console.WriteLine($"{i},{i.GyorshajtottE(50)}");
                 if (i.GetType()==typeof(Robogo))
                 {
-                    Console.WriteLine("Ez robogó");
+                    Robogo robogo = (Robogo)i;
+                    Console.WriteLine(robogo.HaladhatItt(40));
                 }
                 if (i.GetType() == typeof(AudiS8))
                 {
