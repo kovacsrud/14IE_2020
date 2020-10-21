@@ -8,6 +8,6 @@ namespace Jarmuvek
 {
     interface IKisGepjarmu
     {
-
+        bool HaladhatItt(int sebesseg);
     }
 }
