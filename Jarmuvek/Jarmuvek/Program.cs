@@ -14,7 +14,15 @@ namespace Jarmuvek
 
             foreach (var i in orszagut.Jarmuvek)
             {
-                Console.WriteLine(i);
+                Console.WriteLine($"{i},{i.GyorshajtottE(50)}");
+                if (i.GetType()==typeof(Robogo))
+                {
+                    Console.WriteLine("Ez robogó");
+                }
+                if (i.GetType() == typeof(AudiS8))
+                {
+                    Console.WriteLine("Ez Audi");
+                }
             }
 
             Console.ReadKey();
