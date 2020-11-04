@@ -35,6 +35,7 @@ namespace WpfPotNotePad
                 if (dialog.ShowDialog() == true)
                 {
                     szoveg.Text = File.ReadAllText(dialog.FileName, Encoding.Default);
+                    this.Title = dialog.FileName.Split('\\').Last();
                 }
             }
             catch (DirectoryNotFoundException ex)
@@ -53,6 +54,55 @@ namespace WpfPotNotePad
         }
 
         private void buttonMentes_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                if (dialog.ShowDialog() == true)
+                {
+                    File.WriteAllText(dialog.FileName, szoveg.Text, Encoding.Default);
+                }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                MessageBox.Show("A mappa nem elérhető!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("A fájl nem elérhető!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                if (dialog.ShowDialog() == true)
+                {
+                    szoveg.Text = File.ReadAllText(dialog.FileName, Encoding.Default);
+                    this.Title = dialog.FileName.Split('\\').Last();
+                }
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                MessageBox.Show("A mappa nem elérhető!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("A fájl nem elérhető!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
