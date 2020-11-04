@@ -33,14 +33,19 @@ namespace WpfKepbetoltes
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "képek (*.jpg;*.jpeg;*.gif)|*.jpg;*.jpeg;*.gif|minden fájl (*.*)|*.*";
                 dialog.FilterIndex = 1;
+                dialog.Multiselect = true;
+                
                 if (dialog.ShowDialog() == true)
                 {
-                    Image kep = new Image();
-                    BitmapImage bitmap = new BitmapImage(new Uri(dialog.FileName));
-                    kep.Source = bitmap;
-                    fogrid.Children.Add(kep);
-                    Grid.SetRow(kep, 0);
-                    Grid.SetColumn(kep, 0);
+                    var files = dialog.FileNames;
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        Image kep = new Image();
+                        BitmapImage bitmap = new BitmapImage(new Uri(files[i]));
+                        kep.Source = bitmap;
+                        panelKepek.Children.Add(kep);
+                    }
+                  
                 }
             }
             catch(NotSupportedException ex)
