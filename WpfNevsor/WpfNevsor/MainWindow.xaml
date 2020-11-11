@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="datagridAdatok" IsReadOnly="True" ColumnWidth="*"/>
+        <DataGrid x:Name="datagridAdatok" ItemsSource="{Binding}" AutoGenerateColumns="False" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Vezetéknév" Binding="{Binding Vezeteknev}"/>
+                <DataGridTextColumn Header="Keresztnév" Binding="{Binding Keresztnev}"/>
+                <DataGridTextColumn Header="Születési év" Binding="{Binding SzuletesiEv}"/>
+                <DataGridTextColumn Header="Születési hely" Binding="{Binding Szuletesihely}"/>
+
+            </DataGrid.Columns>
+         </DataGrid>
     </Grid>
 </Window>
