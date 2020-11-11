@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace WpfSlideshow
 {
@@ -20,9 +22,18 @@ namespace WpfSlideshow
     /// </summary>
     public partial class MainWindow : Window
     {
+        OpenFileDialog openDialog;
+        DispatcherTimer timer;
+        int szamlalo;
+        string[] fajlok;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+
+
+
     }
 }
