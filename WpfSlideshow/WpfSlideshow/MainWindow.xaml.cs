@@ -33,6 +33,7 @@ namespace WpfSlideshow
             szamlalo = 0;
             timer = new DispatcherTimer(TimeSpan.FromMilliseconds(1000),DispatcherPriority.Normal,Kepvalto,Dispatcher.CurrentDispatcher);
             timer.Stop();
+            buttonStartStop.IsEnabled = false;
             
         }
 
@@ -40,6 +41,7 @@ namespace WpfSlideshow
         {
             kep.Source = new BitmapImage(new Uri(fajlok[szamlalo]));
             szamlalo++;
+            
             if (szamlalo>=fajlok.Length)
             {
                 szamlalo = 0;
@@ -54,6 +56,21 @@ namespace WpfSlideshow
             {
                 fajlok = openDialog.FileNames;
                 timer.Start();
+                buttonStartStop.Content = "Stop";
+                buttonStartStop.IsEnabled = true;
+            }
+        }
+
+        private void buttonStartStop_Click(object sender, RoutedEventArgs e)
+        {
+            if (timer.IsEnabled)
+            {
+                timer.Stop();
+                buttonStartStop.Content = "Start";
+            } else
+            {
+                timer.Start();
+                buttonStartStop.Content = "Stop";
             }
         }
     }
