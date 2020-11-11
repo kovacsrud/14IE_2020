@@ -18,7 +18,7 @@ namespace WpfNevsor
             nevsor = new List<Nev>();
             try
             {
-                var sorok = File.ReadAllLines(fajl,Encoding.Default);
+                var sorok = File.ReadAllLines(fajl, Encoding.Default);
                 for (int i = 0; i < sorok.Length; i++)
                 {
                     var e = sorok[i].Split(',');
@@ -39,6 +39,13 @@ namespace WpfNevsor
             {
                 MessageBox.Show(ex.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+
+        public List<Nev> Kereses(string kif)
+        {
+            var eredmeny = nevsor.FindAll(x=>x.Vezeteknev.ToLower().StartsWith(kif.ToLower()));
+            return eredmeny;
         }
     }
 }
