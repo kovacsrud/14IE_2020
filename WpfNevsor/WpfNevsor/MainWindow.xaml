@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WpfNevsor"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    
+
+    <TabControl>
+        <TabItem Header="Alapadatok">
             <Grid>
                 <DataGrid x:Name="datagridAdatok" ItemsSource="{Binding}" AutoGenerateColumns="False" ColumnWidth="*">
                     <DataGrid.Columns>
@@ -18,5 +20,22 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-    
+        </TabItem>
+        <TabItem Header="Keresés">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="233"/>
+                </Grid.RowDefinitions>
+                <WrapPanel>
+                    <TextBox x:Name="textBoxKereso" Width="200" FontSize="30"/>
+                    <Button x:Name="buttonKereses" Width="100" Content="Keresés" Click="buttonKereses_Click"/>
+                </WrapPanel>
+
+                <DataGrid x:Name="datagridKereses" Grid.Row="1" ColumnWidth="*"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+
 </Window>

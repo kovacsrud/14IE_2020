@@ -28,8 +28,13 @@ namespace WpfNevsor
             nevsor = new Nevsor("nevsor_20k.txt");
             //Debug.WriteLine(nevsor.NevSor.Count);
             datagridAdatok.ItemsSource = nevsor.NevSor;
-            var eredmeny = nevsor.Kereses("ab");
-            datagridAdatok.ItemsSource = eredmeny;
+            
+        }
+
+        private void buttonKereses_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = nevsor.Kereses(textBoxKereso.Text);
+            datagridKereses.ItemsSource = eredmeny;
         }
     }
 }
