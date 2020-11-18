@@ -61,13 +61,25 @@ namespace WpfIdojarasBongeszo
         public List<int> GetHonapok(int ev)
         {
             List<int> honapok = new List<int>();
-            var evek = GetGridAdatok(ev);
-            var eveklookup = evek.ToLookup(x => x.Honap).OrderBy(x => x.Key);
-            foreach (var i in eveklookup)
+            var evadatok = GetGridAdatok(ev);
+            var evlookup = evadatok.ToLookup(x => x.Honap).OrderBy(x => x.Key);
+            foreach (var i in evlookup)
             {
                 honapok.Add(i.Key);
             }
             return honapok;
+        }
+
+        public List<int> GetNapok(int ev,int honap)
+        {
+            List<int> napok = new List<int>();
+            var honapadatok = GetGridAdatok(ev, honap);
+            var honaplookup = honapadatok.ToLookup(x => x.Nap).OrderBy(x => x.Key);
+            foreach (var i in honaplookup)
+            {
+                napok.Add(i.Key);
+            }
+            return napok;
         }
 
         public IOrderedEnumerable<IdojarasAdat> GetGridAdatok(int ev)
