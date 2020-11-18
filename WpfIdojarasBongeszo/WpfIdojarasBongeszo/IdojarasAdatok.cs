@@ -93,5 +93,11 @@ namespace WpfIdojarasBongeszo
             var adatok = idojarasadatok.FindAll(x => x.Ev == ev && x.Honap==honap).OrderBy(x => x.Honap).ThenBy(x => x.Nap).ThenBy(x => x.Ora);
             return adatok;
         }
+        
+        public IOrderedEnumerable<IdojarasAdat> GetGridAdatok(int ev,int honap,int nap)
+        {
+            var adatok = idojarasadatok.FindAll(x => x.Ev == ev && x.Honap == honap && x.Nap==nap).OrderBy(x => x.Honap).ThenBy(x => x.Nap).ThenBy(x => x.Ora);
+            return adatok;
+        }
     }
 }

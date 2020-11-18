@@ -28,6 +28,7 @@ namespace WpfIdojarasBongeszo
             listboxEvek.ItemsSource = idojarasadatok.GetEvek();
             listboxEvek.SelectionChanged += KivalasztEv;
             listboxHonapok.SelectionChanged += KivalasztHonap;
+            listboxNapok.SelectionChanged += KivalasztNap;
         }
 
         private void KivalasztEv(object sender,RoutedEventArgs e)
@@ -42,6 +43,16 @@ namespace WpfIdojarasBongeszo
             var ev = Convert.ToInt32(listboxEvek.SelectedItem);
             var honap = Convert.ToInt32(listboxHonapok.SelectedItem);
             gridAdatok.ItemsSource = idojarasadatok.GetGridAdatok(ev, honap);
+            listboxNapok.ItemsSource = idojarasadatok.GetNapok(ev, honap);
+        }
+
+        private void KivalasztNap(object sender,RoutedEventArgs e)
+        {
+            var ev = Convert.ToInt32(listboxEvek.SelectedItem);
+            var honap = Convert.ToInt32(listboxHonapok.SelectedItem);
+            var nap = Convert.ToInt32(listboxNapok.SelectedItem);
+            gridAdatok.ItemsSource = idojarasadatok.GetGridAdatok(ev, honap, nap);
+
         }
     }
 }
