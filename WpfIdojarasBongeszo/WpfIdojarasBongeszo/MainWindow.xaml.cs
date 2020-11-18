@@ -25,6 +25,7 @@ namespace WpfIdojarasBongeszo
         {
             InitializeComponent();
             idojarasadatok = new IdojarasAdatok("idojaras.csv");
+            listboxEvek.ItemsSource = idojarasadatok.GetEvek();
         }
     }
 }

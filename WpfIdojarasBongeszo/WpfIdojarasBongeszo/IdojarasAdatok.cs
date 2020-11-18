@@ -43,5 +43,19 @@ namespace WpfIdojarasBongeszo
             }
 
         }
+
+        public List<int> GetEvek()
+        {
+            List<int> evek = new List<int>();
+
+            var eveklookup = idojarasadatok.ToLookup(x => x.Ev).OrderBy(x=>x.Key);
+
+            foreach (var i in eveklookup)
+            {
+                evek.Add(i.Key);
+            }
+
+            return evek;
+        }
     }
 }
