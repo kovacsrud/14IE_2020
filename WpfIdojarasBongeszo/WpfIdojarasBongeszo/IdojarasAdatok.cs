@@ -57,5 +57,11 @@ namespace WpfIdojarasBongeszo
 
             return evek;
         }
+
+        public List<IdojarasAdat> GetGridAdatok(int ev)
+        {
+            var adatok = idojarasadatok.FindAll(x=>x.Ev==ev);
+            return adatok;
+        }
     }
 }
