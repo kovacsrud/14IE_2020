@@ -58,9 +58,27 @@ namespace WpfIdojarasBongeszo
             return evek;
         }
 
-        public List<IdojarasAdat> GetGridAdatok(int ev)
+        public List<int> GetHonapok(int ev)
         {
-            var adatok = idojarasadatok.FindAll(x=>x.Ev==ev);
+            List<int> honapok = new List<int>();
+            var evek = GetGridAdatok(ev);
+            var eveklookup = evek.ToLookup(x => x.Honap).OrderBy(x => x.Key);
+            foreach (var i in eveklookup)
+            {
+                honapok.Add(i.Key);
+            }
+            return honapok;
+        }
+
+        public IOrderedEnumerable<IdojarasAdat> GetGridAdatok(int ev)
+        {
+            var adatok = idojarasadatok.FindAll(x=>x.Ev==ev).OrderBy(x=>x.Honap).ThenBy(x=>x.Nap).ThenBy(x=>x.Ora);
+            return adatok;
+        }
+
+        public IOrderedEnumerable<IdojarasAdat> GetGridAdatok(int ev,int honap)
+        {
+            var adatok = idojarasadatok.FindAll(x => x.Ev == ev && x.Honap==honap).OrderBy(x => x.Honap).ThenBy(x => x.Nap).ThenBy(x => x.Ora);
             return adatok;
         }
     }

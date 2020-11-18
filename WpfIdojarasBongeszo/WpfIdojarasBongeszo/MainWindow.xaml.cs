@@ -27,12 +27,21 @@ namespace WpfIdojarasBongeszo
             idojarasadatok = new IdojarasAdatok("idojaras.csv");
             listboxEvek.ItemsSource = idojarasadatok.GetEvek();
             listboxEvek.SelectionChanged += KivalasztEv;
+            listboxHonapok.SelectionChanged += KivalasztHonap;
         }
 
         private void KivalasztEv(object sender,RoutedEventArgs e)
         {
             var ev = Convert.ToInt32(listboxEvek.SelectedItem);
             gridAdatok.ItemsSource = idojarasadatok.GetGridAdatok(ev);
+            listboxHonapok.ItemsSource = idojarasadatok.GetHonapok(ev);
+        }
+
+        private void KivalasztHonap(object sender,RoutedEventArgs e)
+        {
+            var ev = Convert.ToInt32(listboxEvek.SelectedItem);
+            var honap = Convert.ToInt32(listboxHonapok.SelectedItem);
+            gridAdatok.ItemsSource = idojarasadatok.GetGridAdatok(ev, honap);
         }
     }
 }
