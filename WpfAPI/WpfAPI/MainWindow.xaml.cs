@@ -26,6 +26,9 @@ namespace WpfAPI
     {
         JObject jsonIp;
         String apiKey = "57e7f2daa88da7119dc6c575f1232c0f";
+        string weatherApiKey = "cee47ae14c4e2b23dd70220929479c28";
+        JObject jsonWeather;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,7 +49,12 @@ namespace WpfAPI
             jsonIp = JObject.Parse(new WebClient().DownloadString($"http://api.ipstack.com/{ipAddress}?access_key={apiKey}"));
         }
 
-        //https://taszi.hu/kepek/kepkezelo/large/2828.jpg
+        public void GetWeatherData(string city)
+        {
+            jsonWeather = JObject.Parse(new WebClient().DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weatherApiKey}&units=metric"));
+        }
+
+
 
         public BitmapImage KepFromUrl(string url)
         {
