@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,9 +24,50 @@ namespace WpfAPI
     public partial class MainWindow : Window
     {
         JObject jsonIp;
+        String apiKey = "57e7f2daa88da7119dc6c575f1232c0f";
         public MainWindow()
         {
             InitializeComponent();
+                       
+        }
+
+        public TextBlock DataTextBlock(string data,int fontmeret)
+        {
+            TextBlock datatext = new TextBlock();
+            datatext.Text = data;
+            datatext.FontSize = fontmeret;
+
+            return datatext;
+        }
+
+        public void GetIpData(string ipAddress)
+        {
+            jsonIp = JObject.Parse(new WebClient().DownloadString($"http://api.ipstack.com/{ipAddress}?access_key={apiKey}"));
+        }
+
+        private void buttonIp_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            try
+            {
+                GetIpData(textboxIp.Text);
+                Debug.WriteLine(jsonIp);
+                stackAdatok.Children.Clear();
+                stackAdatok.Children.Add(DataTextBlock((string)jsonIp["continent_name"], 20));
+                stackAdatok.Children.Add(DataTextBlock((string)jsonIp["country_name"], 20));
+                stackAdatok.Children.Add(DataTextBlock((string)jsonIp["city"], 30));
+                stackAdatok.Children.Add(DataTextBlock((string)jsonIp["location"]["capital"], 20));
+            }
+            catch (Newtonsoft.Json.JsonReaderException ex)
+            {
+                MessageBox.Show("Hibás IP!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -12,5 +12,9 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="stackAdatok" />
+        <WrapPanel Grid.Row="1">
+            <TextBox x:Name="textboxIp" Width="200" FontSize="25"  />
+            <Button x:Name="buttonIp" Content="Lekérdezés" Click="buttonIp_Click" />
+        </WrapPanel>
     </Grid>
 </Window>
