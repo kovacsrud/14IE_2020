@@ -28,6 +28,7 @@ namespace WpfAPI
         String apiKey = "57e7f2daa88da7119dc6c575f1232c0f";
         string weatherApiKey = "cee47ae14c4e2b23dd70220929479c28";
         JObject jsonWeather;
+        JObject jw;
 
         public MainWindow()
         {
@@ -52,6 +53,14 @@ namespace WpfAPI
         public void GetWeatherData(string city)
         {
             jsonWeather = JObject.Parse(new WebClient().DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weatherApiKey}&units=metric&lang=hu"));
+           
+        }
+
+        public void Getw(string city)
+        {
+            WebClient cl = new WebClient();
+            cl.Encoding = Encoding.UTF8;
+            jw = JObject.Parse(cl.DownloadString($"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weatherApiKey}&units=metric&lang=hu"));
         }
 
 
@@ -77,17 +86,18 @@ namespace WpfAPI
             {
                 GetIpData(textboxIp.Text);
                 GetWeatherData((string)jsonIp["city"]);
-                //Debug.WriteLine(jsonIp);
-                Debug.WriteLine(jsonWeather);
+                Getw((string)jsonIp["city"]);
+                Debug.WriteLine(jw);
+                //Debug.WriteLine(jsonWeather);
                 stackAdatok.Children.Clear();
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["continent_name"], 20));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["country_name"], 20));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["city"], 30));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["location"]["capital"], 20));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonWeather["main"]["temp"],24));
-                stackAdatok.Children.Add(DataTextBlock((string)jsonWeather["dt"], 20));
+                stackAdatok.Children.Add(DataTextBlock($"{DateTimeOffset.FromUnixTimeSeconds((long)jsonWeather["dt"]).DateTime}", 20));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonWeather["weather"][0]["main"], 20));
-                stackAdatok.Children.Add(DataTextBlock((string)jsonWeather["weather"][0]["description"], 20));
+                stackAdatok.Children.Add(DataTextBlock((string)jw["weather"][0]["description"], 20));
                 netKep.Source = KepFromUrl("https://taszi.hu/kepek/kepkezelo/large/2828.jpg");
             }
             catch (Newtonsoft.Json.JsonReaderException ex)
