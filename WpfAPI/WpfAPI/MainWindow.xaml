@@ -20,6 +20,7 @@
         <WrapPanel Grid.Row="1" Grid.ColumnSpan="2">
             <TextBox x:Name="textboxIp" Width="200" FontSize="25"  />
             <Button x:Name="buttonIp" Content="Lekérdezés" Click="buttonIp_Click" />
+            <Button x:Name="buttonKep" Content="Letöltés" Click="buttonKep_Click"  />
         </WrapPanel>
     </Grid>
 </Window>
