@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -45,6 +46,21 @@ namespace WpfAPI
             jsonIp = JObject.Parse(new WebClient().DownloadString($"http://api.ipstack.com/{ipAddress}?access_key={apiKey}"));
         }
 
+        //https://taszi.hu/kepek/kepkezelo/large/2828.jpg
+
+        public BitmapImage KepFromUrl(string url)
+        {
+            WebClient kepclient = new WebClient();
+            byte[] adatok = kepclient.DownloadData(url);
+            MemoryStream ms = new MemoryStream(adatok);
+            BitmapImage netkep = new BitmapImage();
+            netkep.BeginInit();
+            netkep.StreamSource = ms;
+            netkep.EndInit();
+
+            return netkep;
+        }
+
         private void buttonIp_Click(object sender, RoutedEventArgs e)
         {
             
@@ -58,6 +74,7 @@ namespace WpfAPI
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["country_name"], 20));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["city"], 30));
                 stackAdatok.Children.Add(DataTextBlock((string)jsonIp["location"]["capital"], 20));
+                netKep.Source = KepFromUrl("https://taszi.hu/kepek/kepkezelo/large/2828.jpg");
             }
             catch (Newtonsoft.Json.JsonReaderException ex)
             {
