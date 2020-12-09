@@ -33,10 +33,14 @@ namespace Kutyak
                 (k,kn)=> new { Id = k.Id, Kor = k.Kor, UtolsoEll = k.UtolsoEll, Kutyanev = k.Kutyanev, Fajta = kn.Nev }
                 );
 
-            foreach (var i in teljes)
-            {
-                Console.WriteLine($"{i.Id},{i.Kutyanev},{i.Kor},{i.Fajta}");
-            }
+            //foreach (var i in teljes)
+            //{
+            //    Console.WriteLine($"{i.Id},{i.Kutyanev},{i.Kor},{i.Fajta}");
+            //}
+
+            var legidosebb = teljes.Where(x=>x.Kor==teljes.Max(y=>y.Kor));
+
+            Console.WriteLine($"A legidősebb kutya:{legidosebb.First().Kutyanev},{legidosebb.First().Fajta},{legidosebb.First().Kor}");
 
             Console.ReadKey();
         }
