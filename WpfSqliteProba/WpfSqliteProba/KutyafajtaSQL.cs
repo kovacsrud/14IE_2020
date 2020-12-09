@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,15 @@ namespace WpfSqliteProba
         private List<Kutyafajta> kutyafajtak;
         public List<Kutyafajta> Kutyafajtak { get { return kutyafajtak; } }
 
+        public DataTable KutyafajtakDT;
+
         public KutyafajtaSQL(string connstring)
         {
             connString = connstring;
             kutyafajtak = new List<Kutyafajta>();
-            Lekerdezes();
+            KutyafajtakDT = new DataTable();
+            //Lekerdezes();
+            LekerdezesDt();
         }
 
         private void Lekerdezes()
@@ -67,6 +72,27 @@ namespace WpfSqliteProba
                     }
 
 
+
+                }
+
+
+            }
+        }
+
+        private void LekerdezesDt()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            {
+                conn.Open();
+                using (SQLiteCommand command = new SQLiteCommand())
+                {
+                    command.Connection = conn;
+                    command.CommandText = "select * from kutyafajtak";
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        KutyafajtakDT.Load(reader);                     
+                    }
 
                 }
 
