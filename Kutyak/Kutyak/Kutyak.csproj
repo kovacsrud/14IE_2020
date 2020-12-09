@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KutyaBecenevek.cs" />
     <Compile Include="KutyaKezelesek.cs" />
+    <Compile Include="KutyaNevek.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
