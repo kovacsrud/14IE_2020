@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,7 @@ namespace WpfSqliteProba
             InitializeComponent();
             kutyafajtak = new KutyafajtaSQL("Data source=g:/kutyak14ie.db;Version=3");
             //kutyaFajtak.ItemsSource = kutyafajtak.Kutyafajtak;
+            kutyaFajtak.MouseDoubleClick += GridDblClick;
             kutyaFajtak.ItemsSource = kutyafajtak.KutyafajtakDT.DefaultView;
             
         }
@@ -35,5 +38,22 @@ namespace WpfSqliteProba
             WinUjKutyafajta winujkutyafajta = new WinUjKutyafajta(this);
             winujkutyafajta.ShowDialog();
         }
+
+        private void GridDblClick(object sender,RoutedEventArgs e)
+        {
+            DataRowView row = (DataRowView)kutyaFajtak.SelectedItem;
+            Debug.WriteLine(row["id"]);
+            Debug.WriteLine(row["nev"]);
+            Debug.WriteLine(row["eredetinev"]);
+            WinModKutyafajta winmodkutyafajta = new WinModKutyafajta(
+                this,
+                Convert.ToInt32(row["id"]),
+                row["nev"].ToString(),
+                row["eredetinev"].ToString()
+                );
+            winmodkutyafajta.ShowDialog();
+
+        }
+
     }
 }
