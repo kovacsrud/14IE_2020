@@ -26,6 +26,7 @@ namespace WpfSqliteProba
             KutyafajtaSQL kutyafajtak = new KutyafajtaSQL("Data source=g:/kutyak14ie.db;Version=3");
             //kutyaFajtak.ItemsSource = kutyafajtak.Kutyafajtak;
             kutyaFajtak.ItemsSource = kutyafajtak.KutyafajtakDT.DefaultView;
+            
         }
     }
 }

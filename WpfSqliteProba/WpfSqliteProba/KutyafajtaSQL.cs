@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ namespace WpfSqliteProba
             KutyafajtakDT = new DataTable();
             //Lekerdezes();
             LekerdezesDt();
+            UjKutyafajta("puli", "puli");
+            
         }
 
         private void Lekerdezes()
@@ -66,15 +69,9 @@ namespace WpfSqliteProba
                             MessageBox.Show("Nincs a feltételnek megfelelő adat!");
                         }
 
-
-
-
                     }
 
-
-
                 }
-
 
             }
         }
@@ -91,12 +88,29 @@ namespace WpfSqliteProba
 
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        KutyafajtakDT.Load(reader);                     
+                        KutyafajtakDT.Load(reader);              
                     }
 
                 }
 
 
+            }
+        }
+
+        public void UjKutyafajta(string nev,string eredetinev)
+        {
+            using (SQLiteConnection conn=new SQLiteConnection(connString))
+            {
+                conn.Open();
+                using (SQLiteCommand command=new SQLiteCommand(conn))
+                {
+                    command.CommandText = "INSERT INTO kutyafajtak VALUES(@nev,@eredetinev)";
+                    command.Parameters.Add("@nev", DbType.String).Value = nev;
+                    command.Parameters.Add("@eredetinev", DbType.String).Value = eredetinev;
+                    
+                    var sor=command.ExecuteNonQuery();
+                    Debug.WriteLine($"Beillesztve:{sor} rekord.");
+                }
             }
         }
 
