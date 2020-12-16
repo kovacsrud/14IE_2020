@@ -34,7 +34,7 @@ namespace WpfSqliteProba
             KutyafajtakDT = new DataTable();
             //Lekerdezes();
             LekerdezesDt();
-            UjKutyafajta("puli", "puli");
+            UjKutyafajta("komondor", "komondor");
             
         }
 
@@ -104,12 +104,14 @@ namespace WpfSqliteProba
                 conn.Open();
                 using (SQLiteCommand command=new SQLiteCommand(conn))
                 {
-                    command.CommandText = "INSERT INTO kutyafajtak VALUES(@nev,@eredetinev)";
+                    command.CommandText = "INSERT INTO kutyafajtak (nev,eredetinev) VALUES(@nev,@eredetinev)";
                     command.Parameters.Add("@nev", DbType.String).Value = nev;
                     command.Parameters.Add("@eredetinev", DbType.String).Value = eredetinev;
                     
                     var sor=command.ExecuteNonQuery();
                     Debug.WriteLine($"Beillesztve:{sor} rekord.");
+                    LekerdezesDt();
+
                 }
             }
         }
