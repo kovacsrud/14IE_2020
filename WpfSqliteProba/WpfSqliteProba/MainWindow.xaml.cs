@@ -29,6 +29,8 @@ namespace WpfSqliteProba
             kutyafajtak = new KutyafajtaSQL("Data source=g:/kutyak14ie.db;Version=3");
             //kutyaFajtak.ItemsSource = kutyafajtak.Kutyafajtak;
             kutyaFajtak.MouseDoubleClick += GridDblClick;
+            kutyaFajtak.MouseRightButtonDown += GridRightClick;
+            
             kutyaFajtak.ItemsSource = kutyafajtak.KutyafajtakDT.DefaultView;
             
         }
@@ -53,6 +55,18 @@ namespace WpfSqliteProba
                 );
             winmodkutyafajta.ShowDialog();
 
+        }
+
+        private void GridRightClick(object sender,RoutedEventArgs e)
+        {
+            DataRowView row = (DataRowView)kutyaFajtak.SelectedItem;
+            WinTorolKutyafajta wintorolkutyafajta = new WinTorolKutyafajta(
+                this,
+                Convert.ToInt32(row["id"]),
+                row["nev"].ToString(),
+                row["eredetinev"].ToString()
+                );
+            wintorolkutyafajta.ShowDialog();
         }
 
     }
