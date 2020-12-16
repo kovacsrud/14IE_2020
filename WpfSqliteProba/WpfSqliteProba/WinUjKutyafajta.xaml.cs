@@ -19,9 +19,32 @@ namespace WpfSqliteProba
     /// </summary>
     public partial class WinUjKutyafajta : Window
     {
+        MainWindow mainwindow;
         public WinUjKutyafajta()
         {
             InitializeComponent();
+        }
+
+        //Dependency injection
+        public WinUjKutyafajta(MainWindow atvettablak)
+        {
+            InitializeComponent();
+            mainwindow = atvettablak;
+        }
+
+        private void buttonUjKutyafajta_Click(object sender, RoutedEventArgs e)
+        {
+            var muvelet = MessageBox.Show("Biztosan rögzíti?","Új adat felvitele",MessageBoxButton.YesNo,MessageBoxImage.Question);
+
+            if (muvelet==MessageBoxResult.Yes && textboxUjnev.Text.Length>3 && textboxUjEredetinev.Text.Length>3)
+            {
+                mainwindow.kutyafajtak.UjKutyafajta(textboxUjnev.Text,textboxUjEredetinev.Text);
+                textboxUjnev.Text = "";
+                textboxUjEredetinev.Text = "";
+            } else
+            {
+                MessageBox.Show("Adatfelvitel megszakítva", "Új adat felvitele", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

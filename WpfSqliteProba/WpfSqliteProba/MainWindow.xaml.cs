@@ -20,10 +20,11 @@ namespace WpfSqliteProba
     /// </summary>
     public partial class MainWindow : Window
     {
+        public KutyafajtaSQL kutyafajtak;
         public MainWindow()
         {
             InitializeComponent();
-            KutyafajtaSQL kutyafajtak = new KutyafajtaSQL("Data source=g:/kutyak14ie.db;Version=3");
+            kutyafajtak = new KutyafajtaSQL("Data source=g:/kutyak14ie.db;Version=3");
             //kutyaFajtak.ItemsSource = kutyafajtak.Kutyafajtak;
             kutyaFajtak.ItemsSource = kutyafajtak.KutyafajtakDT.DefaultView;
             
@@ -31,7 +32,7 @@ namespace WpfSqliteProba
 
         private void buttonUjKutyafajta_Click(object sender, RoutedEventArgs e)
         {
-            WinUjKutyafajta winujkutyafajta = new WinUjKutyafajta();
+            WinUjKutyafajta winujkutyafajta = new WinUjKutyafajta(this);
             winujkutyafajta.ShowDialog();
         }
     }
