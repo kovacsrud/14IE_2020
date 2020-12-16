@@ -34,8 +34,12 @@ namespace WpfSqliteProba
             KutyafajtakDT = new DataTable();
             //Lekerdezes();
             LekerdezesDt();
-            UjKutyafajta("komondor", "komondor");
-            
+            //UjKutyafajta("komondor", "komondor");
+            //ModositKutyafajta(423, "kuvasz", "kuvasz");
+            //ModositKutyafajta(425, "vizsla", "vizsla");
+            //TorolKutyafajta(425);
+
+
         }
 
         private void Lekerdezes()
@@ -112,6 +116,41 @@ namespace WpfSqliteProba
                     Debug.WriteLine($"Beillesztve:{sor} rekord.");
                     LekerdezesDt();
 
+                }
+            }
+        }
+
+        public void ModositKutyafajta(int id,string nev,string eredetinev)
+        {
+            using (SQLiteConnection conn=new SQLiteConnection(connString))
+            {
+                conn.Open();
+                using (SQLiteCommand command=new SQLiteCommand(conn))
+                {
+                    command.CommandText = "UPDATE kutyafajtak SET nev=@nev,eredetinev=@eredetinev WHERE id=@id";
+                    command.Parameters.Add("@nev", DbType.String).Value = nev;
+                    command.Parameters.Add("@eredetinev", DbType.String).Value = eredetinev;
+                    command.Parameters.Add("@id", DbType.Int32).Value = id;
+                    var sor = command.ExecuteNonQuery();
+                    Debug.WriteLine($"Módosítva:{sor} sor.");
+                    LekerdezesDt();
+
+                }
+            }
+        }
+
+        public void TorolKutyafajta(int id)
+        {
+            using (SQLiteConnection conn=new SQLiteConnection(connString))
+            {
+                conn.Open();
+                using (SQLiteCommand command=new SQLiteCommand(conn))
+                {
+                    command.CommandText = "DELETE FROM kutyafajtak WHERE id=@id";
+                    command.Parameters.Add("@id", DbType.Int32).Value = id;
+                    var sor = command.ExecuteNonQuery();
+                    Debug.WriteLine($"Törölve:{sor} sor.");
+                    LekerdezesDt();
                 }
             }
         }

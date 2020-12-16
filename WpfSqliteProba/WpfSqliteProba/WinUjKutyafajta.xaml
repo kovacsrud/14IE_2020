@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfSqliteProba.WinUjKutyafajta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSqliteProba"
+        mc:Ignorable="d"
+        Title="WinUjKutyafajta" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Kutyafajta neve:" FontSize="26"/>
+            <TextBox x:Name="textboxUjnev" FontSize="24"/>
+            <TextBlock Text="Kutyafajta eredeti neve:" FontSize="26"/>
+            <TextBox x:Name="textboxUjEredetinev" FontSize="24"/>
+            <Button x:Name="buttonUjKutyafajta" Content="Új fajta felvitel" FontSize="22" Margin="20" Width="200" />
+        </StackPanel>
+    </Grid>
+</Window>

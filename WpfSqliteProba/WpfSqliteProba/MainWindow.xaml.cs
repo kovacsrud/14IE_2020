@@ -28,5 +28,11 @@ namespace WpfSqliteProba
             kutyaFajtak.ItemsSource = kutyafajtak.KutyafajtakDT.DefaultView;
             
         }
+
+        private void buttonUjKutyafajta_Click(object sender, RoutedEventArgs e)
+        {
+            WinUjKutyafajta winujkutyafajta = new WinUjKutyafajta();
+            winujkutyafajta.ShowDialog();
+        }
     }
 }
