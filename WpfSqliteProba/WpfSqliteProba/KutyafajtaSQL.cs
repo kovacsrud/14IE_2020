@@ -157,7 +157,7 @@ namespace WpfSqliteProba
                     var torlendo = KutyafajtakDT.Select($"id = {id}");
                     KutyafajtakDT.Rows.Remove(torlendo[0]);
                     
-                    //LekerdezesDt();
+                    
                 }
             }
 
