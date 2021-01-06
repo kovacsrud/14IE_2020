@@ -27,6 +27,16 @@
                 <Button x:Name="buttonKutyafajtaUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyafajtaUpdate_Click"  />
             </Grid>
         </TabItem>
+        <TabItem Header="Kutyák kezelései">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="datagridKutyakezelesek" ColumnWidth="*" />
+                <Button x:Name="buttonKutyakezelesekUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyakezelesekUpdate_Click"  />
+            </Grid>
+        </TabItem>
         
     </TabControl>
     

@@ -47,6 +47,19 @@ namespace WpfKutyaAdapter
             adapter.UpdateCommand.Parameters.Add("@utolsoellenorzes", DbType.String, 0, "utolsoellenorzes");
             adapter.UpdateCommand.Parameters.Add("@id",DbType.Int32,0,"id").SourceVersion=DataRowVersion.Original;
 
+            adapter.DeleteCommand = new SQLiteCommand(conn);
+            adapter.DeleteCommand.CommandText = "delete from kutyak where id=@id";
+            adapter.DeleteCommand.Parameters.Add("@id", DbType.Int32, 0, "id").SourceVersion = DataRowVersion.Original;
+
+            adapter.Fill(kutyakezelesadatok);
+
+        }
+
+        public void UpdateKutyakezelesek()
+        {
+            adapter.Update(kutyakezelesadatok);
+            kutyakezelesadatok.Clear();
+            adapter.Fill(kutyakezelesadatok);
         }
 
     }
