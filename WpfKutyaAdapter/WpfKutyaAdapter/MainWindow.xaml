@@ -12,6 +12,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="datagridKutyanevek" ColumnWidth="*" />
-        <Button x:Name="buttonKutyanevUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" />
+        <Button x:Name="buttonKutyanevUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyanevUpdate_Click" />
     </Grid>
 </Window>

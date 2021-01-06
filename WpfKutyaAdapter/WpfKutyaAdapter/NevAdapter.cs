@@ -19,6 +19,7 @@ namespace WpfKutyaAdapter
         public NevAdapter(string connstring)
         {
             connString = connstring;
+            kutyanevadatok = new DataTable();
             conn =new SQLiteConnection(connString);
             adapter = new SQLiteDataAdapter("", conn);
 
@@ -35,7 +36,22 @@ namespace WpfKutyaAdapter
             adapter.UpdateCommand.CommandText = "update kutyanevek" +
                 " set kutyanev=@kutyanev " +
                 " where id=@id";
+            adapter.UpdateCommand.Parameters.Add("@kutyanev", DbType.String, 0, "kutyanev");
+            adapter.UpdateCommand.Parameters.Add("@id", DbType.Int32, 0, "id").SourceVersion = DataRowVersion.Original;
 
+            adapter.DeleteCommand = new SQLiteCommand(conn);
+            adapter.DeleteCommand.CommandText = "delete from kutyanevek where id=@id";
+            adapter.DeleteCommand.Parameters.Add("@id", DbType.Int32, 0, "id").SourceVersion = DataRowVersion.Original;
+
+            adapter.Fill(kutyanevadatok);
+
+        }
+
+        public void UpdateKutyanevek()
+        {
+            adapter.Update(kutyanevadatok);
+            kutyanevadatok.Clear();
+            adapter.Fill(kutyanevadatok);
         }
     }
 }
