@@ -13,7 +13,11 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <DataGrid x:Name="datagridKutyanevek" ColumnWidth="*" />
+                <DataGrid x:Name="datagridKutyanevek" ItemsSource="{Binding nevadapter.Kutyanevadatok}"  AutoGenerateColumns="False" ColumnWidth="*" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Kutya neve" Binding="{Binding kutyanev}" />
+                    </DataGrid.Columns>
+                </DataGrid>
                 <Button x:Name="buttonKutyanevUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyanevUpdate_Click" />
             </Grid>
         </TabItem>

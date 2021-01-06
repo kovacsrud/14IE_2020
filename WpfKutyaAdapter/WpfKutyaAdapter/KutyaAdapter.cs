@@ -9,9 +9,9 @@ namespace WpfKutyaAdapter
     public class KutyaAdapter
     {
         string connString;
-        public NevAdapter nevadapter;
-        public FajtaAdapter fajtaadapter;
-        public KezelesAdapter kezelesadapter;
+        public NevAdapter nevadapter { get; }
+        public FajtaAdapter fajtaadapter { get; }
+        public KezelesAdapter kezelesadapter { get; }
 
         public KutyaAdapter(string connstring)
         {
