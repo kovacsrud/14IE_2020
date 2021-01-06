@@ -37,7 +37,15 @@ namespace WpfKutyaAdapter
             adapter.InsertCommand.Parameters.Add("@eletkor",DbType.Int32,0,"eletkor");
             adapter.InsertCommand.Parameters.Add("@utolsoellenorzes",DbType.String,0,"utolsoellenorzes");
 
-
+            adapter.UpdateCommand = new SQLiteCommand(conn);
+            adapter.UpdateCommand.CommandText = "update kutyak set " +
+                "fajtaid=@fajtaid,nevid=@nevid,eletkor=@eletkor,utolsoellenorzes=@utolsoellenorzes " +
+                "where id=@id";
+            adapter.UpdateCommand.Parameters.Add("@fajtaid", DbType.Int32, 0, "fajtaid");
+            adapter.UpdateCommand.Parameters.Add("@nevid", DbType.Int32, 0, "nevid");
+            adapter.UpdateCommand.Parameters.Add("@eletkor", DbType.Int32, 0, "eletkor");
+            adapter.UpdateCommand.Parameters.Add("@utolsoellenorzes", DbType.String, 0, "utolsoellenorzes");
+            adapter.UpdateCommand.Parameters.Add("@id",DbType.Int32,0,"id").SourceVersion=DataRowVersion.Original;
 
         }
 
