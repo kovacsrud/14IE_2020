@@ -50,7 +50,7 @@ namespace WpfKutyaAdapter
 
         }
 
-        public void KutyafajtaUpdate()
+        public void UpdateKutyafajtak()
         {
             adapter.Update(kutyafajtaadatok);
             kutyafajtaadatok.Clear();

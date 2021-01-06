@@ -6,12 +6,28 @@
         xmlns:local="clr-namespace:WpfKutyaAdapter"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="datagridKutyanevek" ColumnWidth="*" />
-        <Button x:Name="buttonKutyanevUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyanevUpdate_Click" />
-    </Grid>
+    <TabControl>
+        <TabItem Header="Kutyák nevei">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="datagridKutyanevek" ColumnWidth="*" />
+                <Button x:Name="buttonKutyanevUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyanevUpdate_Click" />
+            </Grid>
+        </TabItem>
+        <TabItem Header="Kutyafajták">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="datagridKutyafajtak" ColumnWidth="*" />
+                <Button x:Name="buttonKutyafajtaUpdate" Content="Update" Width="200" Margin="20" Grid.Row="1" Click="buttonKutyafajtaUpdate_Click"  />
+            </Grid>
+        </TabItem>
+        
+    </TabControl>
+    
 </Window>
