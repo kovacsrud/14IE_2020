@@ -103,6 +103,7 @@ namespace WpfSqliteProba
 
         public void UjKutyafajta(string nev,string eredetinev)
         {
+            Debug.WriteLine(KutyafajtakDT.Rows.Count);
             using (SQLiteConnection conn=new SQLiteConnection(connString))
             {
                 conn.Open();
@@ -118,6 +119,7 @@ namespace WpfSqliteProba
 
                 }
             }
+            Debug.WriteLine(KutyafajtakDT.Rows.Count);
         }
 
         public void ModositKutyafajta(int id,string nev,string eredetinev)
@@ -141,6 +143,8 @@ namespace WpfSqliteProba
 
         public void TorolKutyafajta(int id)
         {
+            
+            Debug.WriteLine(KutyafajtakDT.Rows.Count);
             using (SQLiteConnection conn=new SQLiteConnection(connString))
             {
                 conn.Open();
@@ -150,9 +154,17 @@ namespace WpfSqliteProba
                     command.Parameters.Add("@id", DbType.Int32).Value = id;
                     var sor = command.ExecuteNonQuery();
                     Debug.WriteLine($"Törölve:{sor} sor.");
-                    LekerdezesDt();
+                    var torlendo = KutyafajtakDT.Select($"id = {id}");
+                    KutyafajtakDT.Rows.Remove(torlendo[0]);
+                    
+                    //LekerdezesDt();
                 }
             }
+
+            
+            LekerdezesDt();
+            KutyafajtakDT.AcceptChanges();
+            Debug.WriteLine(KutyafajtakDT.Rows.Count);
         }
 
     }
