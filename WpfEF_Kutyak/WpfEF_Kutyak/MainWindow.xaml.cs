@@ -27,6 +27,8 @@ namespace WpfEF_Kutyak
             InitializeComponent();
             kutyamodel = new KutyaModel();
             kutyamodel.kutya.Load();
+            kutyamodel.kutyafajtak.Load();
+            kutyamodel.kutyanevek.Load();
             DataContext = kutyamodel;
             //datagridKutya.ItemsSource = kutyamodel.kutya.Local;
 

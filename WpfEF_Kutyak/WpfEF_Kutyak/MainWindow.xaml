@@ -6,14 +6,50 @@
         xmlns:local="clr-namespace:WpfEF_Kutyak"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="datagridKutya" ItemsSource="{Binding kutya.Local}" AutoGenerateColumns="False" ColumnWidth="*" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Életkor" Binding="{Binding kor}" />
-                <DataGridTextColumn Header="Utolsó kezelés" Binding="{Binding utolsokezeles}" />
-                <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyafajtak.nev}" />
-
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Kutyák kezelései">
+            <Grid>
+                <DataGrid x:Name="datagridKutya" ItemsSource="{Binding kutya.Local}" AutoGenerateColumns="False" ColumnWidth="*" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Életkor" Binding="{Binding kor}" />
+                        <DataGridTextColumn Header="Utolsó kezelés" Binding="{Binding utolsokezeles}" />
+                        <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyafajtak.nev}" />
+                        <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyanevek.Kutyanev}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Kutyák nevei">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="datagridKutyanevek" ItemsSource="{Binding kutyanevek.Local}" AutoGenerateColumns="False" ColumnWidth="*">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Kutya neve" Binding="{Binding Kutyanev}" />
+                    </DataGrid.Columns>
+                    
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Kutyák fajtái">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <DataGrid x:Name="datagridKutyafajtak" ItemsSource="{Binding kutyafajtak.Local}" AutoGenerateColumns="False" ColumnWidth="*">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Név" Binding="{Binding nev}" />
+                        <DataGridTextColumn Header="Eredeti név" Binding="{Binding eredetinev}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        
+    </TabControl>
+    
 </Window>
