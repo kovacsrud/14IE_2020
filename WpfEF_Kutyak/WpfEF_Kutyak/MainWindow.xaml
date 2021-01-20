@@ -17,8 +17,22 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Életkor" Binding="{Binding kor}" />
                         <DataGridTextColumn Header="Utolsó kezelés" Binding="{Binding utolsokezeles}" />
-                        <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyafajtak.nev}" />
-                        <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyanevek.Kutyanev}" />
+                        <!--<DataGridTextColumn Header="Kutya neve" Binding="{Binding kutyafajtak.nev}" />
+                        <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyanevek.Kutyanev}" />-->
+                        <DataGridTemplateColumn Header="Kutya neve">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.kutyanevek.Local, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}" DisplayMemberPath="Kutyanev" SelectedValuePath="Id" SelectedValue="{Binding nevid}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Kutya fajtája">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding DataContext.kutyafajtak.Local, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}" DisplayMemberPath="nev" SelectedValuePath="Id" SelectedValue="{Binding fajtaid}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button x:Name="buttonKutyaUpdate" Content="Update" Grid.Row="1" Click="buttonKutyaUpdate_Click"/>
