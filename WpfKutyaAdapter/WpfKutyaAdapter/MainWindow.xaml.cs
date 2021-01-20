@@ -27,8 +27,8 @@ namespace WpfKutyaAdapter
             kutyaadapter = new KutyaAdapter("Data Source=kutyak14ie.db;Version=3");
             DataContext = kutyaadapter;
             //datagridKutyanevek.ItemsSource = kutyaadapter.nevadapter.Kutyanevadatok;
-            datagridKutyafajtak.ItemsSource = kutyaadapter.fajtaadapter.Kutyafajtaadatok;
-            datagridKutyakezelesek.ItemsSource = kutyaadapter.kezelesadapter.Kutyakezelesadatok;
+            //datagridKutyafajtak.ItemsSource = kutyaadapter.fajtaadapter.Kutyafajtaadatok;
+            //datagridKutyakezelesek.ItemsSource = kutyaadapter.kezelesadapter.Kutyakezelesadatok;
         }
 
         private void buttonKutyanevUpdate_Click(object sender, RoutedEventArgs e)
