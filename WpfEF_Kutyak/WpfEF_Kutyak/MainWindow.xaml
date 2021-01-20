@@ -9,6 +9,10 @@
     <TabControl>
         <TabItem Header="Kutyák kezelései">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
                 <DataGrid x:Name="datagridKutya" ItemsSource="{Binding kutya.Local}" AutoGenerateColumns="False" ColumnWidth="*" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Életkor" Binding="{Binding kor}" />
@@ -17,6 +21,7 @@
                         <DataGridTextColumn Header="Kutya fajtája" Binding="{Binding kutyanevek.Kutyanev}" />
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button x:Name="buttonKutyaUpdate" Content="Update" Grid.Row="1"/>
             </Grid>
         </TabItem>
         <TabItem Header="Kutyák nevei">
@@ -32,6 +37,7 @@
                     </DataGrid.Columns>
                     
                 </DataGrid>
+                <Button x:Name="buttonKutyanevUpdate" Content="Update" Grid.Row="1" />
             </Grid>
         </TabItem>
         <TabItem Header="Kutyák fajtái">
@@ -47,6 +53,7 @@
                         <DataGridTextColumn Header="Eredeti név" Binding="{Binding eredetinev}" />
                     </DataGrid.Columns>
                 </DataGrid>
+                <Button x:Name="buttonKutyafajtaUpdate" Content="Update" Grid.Row="1" />
             </Grid>
         </TabItem>
         
