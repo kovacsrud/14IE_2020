@@ -33,5 +33,33 @@ namespace WpfEF_Kutyak
             //datagridKutya.ItemsSource = kutyamodel.kutya.Local;
 
         }
+
+        private void buttonKutyanevUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            DbUpdate();
+        }
+
+        private void DbUpdate()
+        {
+            var allapot = kutyamodel.SaveChanges();
+            if (allapot > 0)
+            {
+                MessageBox.Show("Művelet sikeres");
+            }
+            else
+            {
+                MessageBox.Show("Művelet sikertelen");
+            }
+        }
+
+        private void buttonKutyafajtaUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            DbUpdate();
+        }
+
+        private void buttonKutyaUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            DbUpdate();
+        }
     }
 }
