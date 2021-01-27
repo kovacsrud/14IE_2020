@@ -10,7 +10,11 @@ namespace EFAuto14IEMigration
     {
         static void Main(string[] args)
         {
+            var autonyilvantartas = new AutoContext();
+            
+            //adatok felvitele
 
+            autonyilvantartas.SaveChanges();
 
             Console.ReadKey();
         }
