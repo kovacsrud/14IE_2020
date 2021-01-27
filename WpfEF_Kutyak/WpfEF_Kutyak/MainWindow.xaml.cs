@@ -65,12 +65,37 @@ namespace WpfEF_Kutyak
         private void buttonKeres_Click(object sender, RoutedEventArgs e)
         {
             dataGridKereses.Items.Clear();
-            var eredmeny = kutyamodel.kutya.Local.Where(x=>x.kor>3);
 
-            foreach (var i in eredmeny)
+            IEnumerable<kutya> eredmeny = new List<kutya>();
+
+            if (textboxNevkeres.Text.Length > 0)
             {
-                dataGridKereses.Items.Add(i);
+                eredmeny = kutyamodel.kutya.Local.Where(x => x.kutyanevek.Kutyanev==textboxNevkeres.Text);
+
+            } else if (textboxFajtakeres.Text.Length > 0)
+            {
+                eredmeny = kutyamodel.kutya.Local.Where(x => x.kutyafajtak.nev==textboxFajtakeres.Text);
+            } else if (textboxFajtakeres.Text.Length > 0 && textboxNevkeres.Text.Length > 0)
+            {
+                eredmeny = kutyamodel.kutya.Local.Where(x => x.kutyafajtak.nev == textboxFajtakeres.Text && x.kutyanevek.Kutyanev == textboxNevkeres.Text);
+            } else 
+            {
+                MessageBox.Show("Valamelyik mezőt ki kell tölteni");
             }
+
+            if (eredmeny.Count()>0)
+            {
+                foreach (var i in eredmeny)
+                {
+                    dataGridKereses.Items.Add(i);
+                }
+            } else
+            {
+                MessageBox.Show("Nincs találat");
+            }
+            
+
+            
 
         }
     }
