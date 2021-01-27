@@ -61,5 +61,17 @@ namespace WpfEF_Kutyak
         {
             DbUpdate();
         }
+
+        private void buttonKeres_Click(object sender, RoutedEventArgs e)
+        {
+            dataGridKereses.Items.Clear();
+            var eredmeny = kutyamodel.kutya.Local.Where(x=>x.kor>3);
+
+            foreach (var i in eredmeny)
+            {
+                dataGridKereses.Items.Add(i);
+            }
+
+        }
     }
 }
