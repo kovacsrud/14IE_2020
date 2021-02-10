@@ -22,7 +22,7 @@ namespace WpfAutoPic
     /// </summary>
     public partial class MainWindow : Window
     {
-        AutoContext autoContext;
+        public AutoContext autoContext;
         public MainWindow()
         {
             InitializeComponent();

@@ -40,5 +40,24 @@ namespace WpfAutoPic
             }
 
         }
+
+        private void buttonUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Auto auto = new Auto {
+                Rendszam = textboxRendszam.Text,
+                Gyartmany = textboxGyartmany.Text,
+                Tipus = textboxTipus.Text,
+                GyartasiEv = Convert.ToInt32(textboxGyartasiEv.Text),
+                AutoKepData=kepadatok
+               
+            };
+            auto.SetImage();
+
+            mainWindow.autoContext.autok.Add(auto);
+
+            mainWindow.autoContext.SaveChanges();
+
+
+        }
     }
 }
