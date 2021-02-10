@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,18 +26,27 @@ namespace WpfAutoPic
         public MainWindow()
         {
             InitializeComponent();
-            byte[] kepdata = File.ReadAllBytes(@"g:/toyota.jpg");
-            autoContext = new AutoContext();
-            Auto auto = new Auto {
-                Rendszam="ABC-001",
-                Gyartmany="Toyota",
-                Tipus="Corolla",
-                GyartasiEv=2006,
-                AutoKepData=kepdata
-            };
-            autoContext.autok.Add(auto);
+            //byte[] kepdata = File.ReadAllBytes(@"g:/toyota.jpg");
+            //autoContext = new AutoContext();
+            //Auto auto = new Auto {
+            //    Rendszam="ABC-001",
+            //    Gyartmany="Toyota",
+            //    Tipus="Corolla",
+            //    GyartasiEv=2006,
+            //    AutoKepData=kepdata
+            //};
+            //autoContext.autok.Add(auto);
 
-            autoContext.SaveChanges();
+            //autoContext.SaveChanges();
+
+            autoContext = new AutoContext();
+            autoContext.autok.Load();
+            foreach (var i in autoContext.autok.Local)
+            {
+                i.SetImage();
+            }
+           
+            DataContext = autoContext;
         }
     }
 }
