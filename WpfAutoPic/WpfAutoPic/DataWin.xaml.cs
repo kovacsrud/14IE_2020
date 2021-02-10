@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,24 @@ namespace WpfAutoPic
     /// </summary>
     public partial class DataWin : Window
     {
-        public DataWin()
+        MainWindow mainWindow;
+        byte[] kepadatok;
+        public DataWin(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
+        }
+
+        private void buttonKepvalaszto_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog()==true)
+            {
+                kepadatok = File.ReadAllBytes(dialog.FileName);
+                imageAutokep.Source = new BitmapImage(new Uri(dialog.FileName));
+            }
+
         }
     }
 }

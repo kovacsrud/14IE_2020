@@ -51,7 +51,7 @@ namespace WpfAutoPic
 
         private void buttonUjAdat_Click(object sender, RoutedEventArgs e)
         {
-            DataWin dataWin = new DataWin();
+            DataWin dataWin = new DataWin(this);
             dataWin.ShowDialog();
         }
     }

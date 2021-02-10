@@ -18,6 +18,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Rendszám:" FontSize="26" VerticalAlignment="Center" />
         <TextBox x:Name="textboxRendszam" FontSize="26" Height="40" Grid.Row="0" Grid.Column="1" />
@@ -28,7 +29,9 @@
         <TextBlock Text="Gyártmási év:" FontSize="26" VerticalAlignment="Center" Grid.Row="3" />
         <TextBox x:Name="textboxGyartasiEv" FontSize="26" Height="40" Grid.Row="3" Grid.Column="1" />
         <TextBlock Text="Kép választás:" FontSize="26" VerticalAlignment="Center" Grid.Row="4" />
-        <Button x:Name="buttonKepvalaszto" Content="Kép választás" FontSize="26" Height="40" Grid.Row="4" Grid.Column="1" />
-        <Button x:Name="buttonUpdate" Content="Update" FontSize="26" Width="300" Margin="10" Grid.Row="5" Grid.ColumnSpan="2" />
+        <Button x:Name="buttonKepvalaszto" Content="Kép választás" FontSize="26" Height="40" Grid.Row="4" Grid.Column="1" Click="buttonKepvalaszto_Click" />
+        <TextBlock Text="Kép:" FontSize="26" VerticalAlignment="Center" Grid.Row="5" />
+        <Image x:Name="imageAutokep" Grid.Column="1" Grid.Row="5" />
+        <Button x:Name="buttonUpdate" Content="Update" FontSize="26" Width="300" Margin="10" Grid.Row="6" Grid.ColumnSpan="2" />
     </Grid>
 </Window>
