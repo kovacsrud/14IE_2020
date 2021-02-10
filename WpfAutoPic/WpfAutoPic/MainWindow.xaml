@@ -12,6 +12,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <DataGrid x:Name="datagridAutok" ItemsSource="{Binding autok.Local}" AutoGenerateColumns="False" ColumnWidth="*" IsReadOnly="True">
                     <DataGrid.Columns>
@@ -32,6 +33,7 @@
                     
                 </DataGrid>
                 <Button x:Name="buttonUjAdat" Content="Új adat felvitele" FontSize="26" Width="200" Margin="10" Grid.Row="1" Click="buttonUjAdat_Click" />
+                <Button x:Name="buttonNyomtat" Content="Nyomtatás" FontSize="26" Width="200" Margin="10" Grid.Row="2"  />
             </Grid>
         </TabItem>
         <TabItem Header="Nyomtatás">
