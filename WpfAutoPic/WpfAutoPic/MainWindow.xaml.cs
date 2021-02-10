@@ -54,5 +54,11 @@ namespace WpfAutoPic
             DataWin dataWin = new DataWin(this);
             dataWin.ShowDialog();
         }
+
+        private void buttonNyomtat_Click(object sender, RoutedEventArgs e)
+        {
+            ReportWin reportWin = new ReportWin(this);
+            reportWin.Show();
+        }
     }
 }

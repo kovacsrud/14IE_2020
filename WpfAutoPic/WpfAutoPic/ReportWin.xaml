@@ -13,9 +13,9 @@
         </Grid.RowDefinitions>
         <FlowDocumentScrollViewer>
             <FlowDocument x:Name="flowDoc">
-                
+                        
             </FlowDocument>
         </FlowDocumentScrollViewer>
-        <Button x:Name="buttonNyomtat" Content="Nyomtatás" Width="200" Margin="30" Grid.Row="1" />
+        <Button x:Name="buttonNyomtat" Content="Nyomtatás" Width="200" Margin="30" Grid.Row="1" Click="buttonNyomtat_Click" />
     </Grid>
 </Window>

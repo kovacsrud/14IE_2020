@@ -33,7 +33,7 @@
                     
                 </DataGrid>
                 <Button x:Name="buttonUjAdat" Content="Új adat felvitele" FontSize="26" Width="200" Margin="10" Grid.Row="1" Click="buttonUjAdat_Click" />
-                <Button x:Name="buttonNyomtat" Content="Nyomtatás" FontSize="26" Width="200" Margin="10" Grid.Row="2"  />
+                <Button x:Name="buttonNyomtat" Content="Nyomtatás" FontSize="26" Width="200" Margin="10" Grid.Row="2" Click="buttonNyomtat_Click"  />
             </Grid>
         </TabItem>
         <TabItem Header="Nyomtatás">
