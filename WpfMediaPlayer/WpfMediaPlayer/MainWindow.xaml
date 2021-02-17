@@ -25,6 +25,8 @@
             </Grid.ColumnDefinitions>
             <fa:FontAwesome Icon="Pause" FontSize="30" />
             <fa:FontAwesome Icon="Play" FontSize="30" Grid.Column="1" />
+            
+            <Button x:Name="buttonOpen" fa:Awesome.Content="Openid" FontSize="30" Grid.Column="2" Click="buttonOpen_Click"/>
         </Grid>
         <ListBox x:Name="listBoxPlaylist" Grid.Column="1">
             

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,28 @@ namespace WpfMediaPlayer
     /// </summary>
     public partial class MainWindow : Window
     {
+        MediaList mediaList { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            mediaList = new MediaList();
+        }
+
+        private void buttonOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;
+            if (dialog.ShowDialog()==true)
+            {
+                mediaList.SetMediaList(dialog.FileNames, '\\');
+
+                //foreach (var i in mediaList.mediaItems)
+                //{
+                //    Debug.WriteLine(i.FullPath);
+                //    Debug.WriteLine(i.Filename);
+                //}
+            }
+
         }
     }
 }
