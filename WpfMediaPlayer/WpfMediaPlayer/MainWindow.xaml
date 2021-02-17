@@ -28,8 +28,13 @@
             
             <Button x:Name="buttonOpen" fa:Awesome.Content="Openid" FontSize="30" Grid.Column="2" Click="buttonOpen_Click"/>
         </Grid>
-        <ListBox x:Name="listBoxPlaylist" Grid.Column="1">
-            
+        <ListBox x:Name="listBoxPlaylist" ItemsSource="{Binding mediaItems,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Filename}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
+        <MediaElement x:Name="mediaPlayer" Stretch="Uniform" />
     </Grid>
 </Window>

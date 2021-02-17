@@ -27,6 +27,7 @@ namespace WpfMediaPlayer
         {
             InitializeComponent();
             mediaList = new MediaList();
+            listBoxPlaylist.DataContext = mediaList;
         }
 
         private void buttonOpen_Click(object sender, RoutedEventArgs e)
