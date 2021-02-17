@@ -23,11 +23,30 @@ namespace WpfAutoPic
     {
         MainWindow mainWindow;
         byte[] kepadatok;
+        bool IsModify;
+        Auto auto;
         public DataWin(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            IsModify = false;
         }
+
+        public DataWin(MainWindow mainWindow,Auto auto)
+        {
+            InitializeComponent();
+            this.mainWindow = mainWindow;
+            this.auto = auto;
+            IsModify = true;
+            textboxRendszam.Text = auto.Rendszam;
+            textboxGyartmany.Text = auto.Gyartmany;
+            textboxTipus.Text = auto.Tipus;
+            textboxGyartasiEv.Text = auto.GyartasiEv.ToString();
+            kepadatok = auto.AutoKepData;
+            imageAutokep.Source = auto.Autokep;
+
+        }
+
 
         private void buttonKepvalaszto_Click(object sender, RoutedEventArgs e)
         {
@@ -43,19 +62,38 @@ namespace WpfAutoPic
 
         private void buttonUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Auto auto = new Auto {
-                Rendszam = textboxRendszam.Text,
-                Gyartmany = textboxGyartmany.Text,
-                Tipus = textboxTipus.Text,
-                GyartasiEv = Convert.ToInt32(textboxGyartasiEv.Text),
-                AutoKepData=kepadatok
-               
-            };
-            auto.SetImage();
 
-            mainWindow.autoContext.autok.Add(auto);
+            if (IsModify)
+            {
+                //Todo:Módosítás
+                auto.Rendszam = textboxRendszam.Text;
+                auto.Gyartmany = textboxGyartmany.Text;
+                auto.Tipus = textboxTipus.Text;
+                auto.GyartasiEv = Convert.ToInt32(textboxGyartasiEv.Text);
+                auto.AutoKepData = kepadatok;
+                auto.SetImage();
+                mainWindow.autoContext.SaveChanges();
+                mainWindow.datagridAutok.Items.Refresh();
 
-            mainWindow.autoContext.SaveChanges();
+            } else
+            {
+                Auto auto = new Auto
+                {
+                    Rendszam = textboxRendszam.Text,
+                    Gyartmany = textboxGyartmany.Text,
+                    Tipus = textboxTipus.Text,
+                    GyartasiEv = Convert.ToInt32(textboxGyartasiEv.Text),
+                    AutoKepData = kepadatok
+
+                };
+                auto.SetImage();
+
+                mainWindow.autoContext.autok.Add(auto);
+
+                mainWindow.autoContext.SaveChanges();
+            }
+
+           
 
 
         }

@@ -41,6 +41,7 @@ namespace WpfAutoPic
 
             autoContext = new AutoContext();
             autoContext.autok.Load();
+            datagridAutok.MouseDoubleClick += gridAdatmodositas;
             foreach (var i in autoContext.autok.Local)
             {
                 i.SetImage();
@@ -59,6 +60,13 @@ namespace WpfAutoPic
         {
             ReportWin reportWin = new ReportWin(this);
             reportWin.Show();
+        }
+
+        private void gridAdatmodositas(object sender,RoutedEventArgs e)
+        {
+            var auto = (Auto)datagridAutok.SelectedItem;
+            DataWin modWin = new DataWin(this, auto);
+            modWin.ShowDialog();
         }
     }
 }
