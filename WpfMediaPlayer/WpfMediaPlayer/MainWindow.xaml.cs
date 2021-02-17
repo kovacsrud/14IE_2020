@@ -27,6 +27,8 @@ namespace WpfMediaPlayer
         {
             InitializeComponent();
             mediaList = new MediaList();
+            mediaPlayer.LoadedBehavior = MediaState.Manual;
+            listBoxPlaylist.SelectionChanged += playListChange;
             listBoxPlaylist.DataContext = mediaList;
         }
 
@@ -45,6 +47,22 @@ namespace WpfMediaPlayer
                 //}
             }
 
+        }
+
+        private void buttonPlay_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Play();
+        }
+
+        private void playListChange(object sender,RoutedEventArgs e)
+        {
+            MediaItem actItem = (MediaItem)listBoxPlaylist.SelectedItem;
+            mediaPlayer.Source = new Uri(actItem.FullPath);
+        }
+
+        private void buttonPause_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Pause();
         }
     }
 }

@@ -23,9 +23,9 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <fa:FontAwesome Icon="Pause" FontSize="30" />
-            <fa:FontAwesome Icon="Play" FontSize="30" Grid.Column="1" />
             
+            <Button x:Name="buttonPause" fa:Awesome.Content="Pause" FontSize="30" Grid.Column="0" Click="buttonPause_Click" />
+            <Button x:Name="buttonPlay" fa:Awesome.Content="Play" FontSize="30" Grid.Column="1" Click="buttonPlay_Click" />
             <Button x:Name="buttonOpen" fa:Awesome.Content="Openid" FontSize="30" Grid.Column="2" Click="buttonOpen_Click"/>
         </Grid>
         <ListBox x:Name="listBoxPlaylist" ItemsSource="{Binding mediaItems,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1">
