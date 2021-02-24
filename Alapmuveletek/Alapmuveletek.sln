@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alapmuveletek", "Alapmuvele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlapmuveletTest", "AlapmuveletTest\AlapmuveletTest.csproj", "{641576DA-4C7B-4810-B497-43110F5EE781}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitAlapTest", "NUnitAlapTest\NUnitAlapTest.csproj", "{1C35BD89-DE30-4284-BA4F-3CAE7CD621DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{641576DA-4C7B-4810-B497-43110F5EE781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{641576DA-4C7B-4810-B497-43110F5EE781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{641576DA-4C7B-4810-B497-43110F5EE781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C35BD89-DE30-4284-BA4F-3CAE7CD621DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C35BD89-DE30-4284-BA4F-3CAE7CD621DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C35BD89-DE30-4284-BA4F-3CAE7CD621DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C35BD89-DE30-4284-BA4F-3CAE7CD621DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
