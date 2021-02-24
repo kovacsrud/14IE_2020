@@ -40,11 +40,7 @@ namespace WpfMediaPlayer
             {
                 mediaList.SetMediaList(dialog.FileNames, '\\');
 
-                //foreach (var i in mediaList.mediaItems)
-                //{
-                //    Debug.WriteLine(i.FullPath);
-                //    Debug.WriteLine(i.Filename);
-                //}
+                
             }
 
         }
@@ -63,6 +59,24 @@ namespace WpfMediaPlayer
         private void buttonPause_Click(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Pause();
+        }
+
+        private void mediaPlayer_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            if (mediaPlayer.NaturalDuration.HasTimeSpan)
+            {
+                Debug.WriteLine(mediaPlayer.NaturalDuration.TimeSpan);
+
+                mediaSlider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+
+
+            }
+        }
+
+        private void mediaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            TimeSpan ts = new TimeSpan(0, 0, (int)mediaSlider.Value);
+            mediaPlayer.Position = ts;
         }
     }
 }
