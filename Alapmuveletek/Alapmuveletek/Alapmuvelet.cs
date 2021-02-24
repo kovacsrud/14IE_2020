@@ -25,7 +25,15 @@ namespace Alapmuveletek
 
         public double Osztas(double a,double b)
         {
-            return a / b;
+            if (b==0)
+            {
+                throw new ArgumentException("B nem lehet 0!");
+            } else
+            {
+                return a / b;
+            }
+
+            
         }
     }
 }
