@@ -42,5 +42,9 @@ namespace NUnitSikidomTest
                 yield return new[] { aoldal, boldal, elvart };
             }
         }
+
+        //Téglalap területe, 50-60 teszteset
+        //Kör kerülete 2*sugar*PI 50-60 teszteset
+        //Kör területe sugar*sugar*PI 50-60 teszteset
     }
 }
