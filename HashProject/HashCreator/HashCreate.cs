@@ -18,7 +18,7 @@ namespace HashCreator
     }
     public class HashCreate
     {
-        public string CreateHash(HashType t,string szoveg)
+        public string CreateHash(HashType t,string szoveg,bool upper=false)
         {
             string hash = "";
             if (t==HashType.MD5)
@@ -105,9 +105,15 @@ namespace HashCreator
                 hash = ByteToHash(hashprovider.ComputeHash(data));
             }
 
+            if (upper)
+            {
+                return hash.ToUpper();
+            } else
+            {
+                return hash;
+            }
 
-
-            return hash;
+            
         }
 
         private string ByteToHash(byte[] data)

@@ -26,8 +26,8 @@ namespace HashCreatorTest
         public void NunitSha1Test(string elvart,string szoveg)
         {
             HashCreate hash = new HashCreate();
-            var sut = hash.CreateHash(HashType.SHA1, szoveg);
-            Assert.AreEqual(elvart.ToLower(), sut);
+            var sut = hash.CreateHash(HashType.SHA1, szoveg,true);
+            Assert.AreEqual(elvart, sut);
         }
     }
 }
