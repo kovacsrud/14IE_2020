@@ -28,7 +28,10 @@ namespace ConsoleApp1
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Szoftverfejlesztő (14d13b)")).Click();
 
-            IList<IWebElement> feladatok = driver.FindElements(By.XPath("/html/body/div[2]/div/div[4]/div/div/div[1]/div/div/div/ul/li[2]/div[3]"));
+            //IList<IWebElement> feladatok = driver.FindElements(By.XPath("/html/body/div[2]/div/div[4]/div/div/div[1]/div/div/div/ul/li[2]/div[3]"));
+            //IList<IWebElement> feladatok = driver.FindElements(By.XPath("//*[@id=\"section-1\"]"));
+            IList<IWebElement> feladatok = driver.FindElements(By.Id("section-1"));
+
 
             for (int i = 0; i < feladatok.Count; i++)
             {
