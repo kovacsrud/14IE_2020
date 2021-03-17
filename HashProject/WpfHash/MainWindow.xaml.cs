@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +65,18 @@ namespace WpfHash
             if (dialog.ShowDialog()==true)
             {
                 MakeHash(dialog.FileName);
+                var eleresiUt = dialog.FileName.Split('\\');
+                var fajlNev = eleresiUt.Last();
+                Debug.WriteLine(fajlNev);
+                var fajl = fajlNev.Split('.')[0];
+                Debug.WriteLine(fajl);
+                string ujEleresiUt = "";
+                for (int i = 0; i < eleresiUt.Length-1; i++)
+                {
+                    ujEleresiUt += eleresiUt[i] + "\\";
+                }
+                ujEleresiUt += fajl + ".hash";
+                Debug.WriteLine(ujEleresiUt);
             }
         }
     }
