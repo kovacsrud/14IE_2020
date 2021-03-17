@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HashCreator;
+using Microsoft.Win32;
 
 namespace WpfHash
 {
@@ -30,24 +31,39 @@ namespace WpfHash
 
         private void buttonHash_Click(object sender, RoutedEventArgs e)
         {
-            if (radioMd5.IsChecked==true)
+            MakeHash(textboxSzoveg.Text);
+        }
+
+        private void MakeHash(string adat)
+        {
+            if (radioMd5.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.MD5, textboxSzoveg.Text);
+                textblockSzovegHash.Text = hash.CreateHash(HashType.MD5, adat);
             }
-            else if (radioSha1.IsChecked==true)
+            else if (radioSha1.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA1, textboxSzoveg.Text);
+                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA1, adat);
             }
-            else if (radioSha256.IsChecked==true)
+            else if (radioSha256.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA256, textboxSzoveg.Text);
+                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA256, adat);
             }
-            else if (radioSha384.IsChecked==true)
+            else if (radioSha384.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA384, textboxSzoveg.Text);
-            } else
+                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA384, adat);
+            }
+            else
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA512, textboxSzoveg.Text);
+                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA512, adat);
+            }
+        }
+
+        private void buttonFajlhash_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog()==true)
+            {
+                MakeHash(dialog.FileName);
             }
         }
     }
