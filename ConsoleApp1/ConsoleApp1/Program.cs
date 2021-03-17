@@ -28,7 +28,7 @@ namespace ConsoleApp1
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Szoftverfejlesztő (14d13b)")).Click();
 
-            Thread.Sleep(10000);
+            IList<IWebElement> feladatok = driver.FindElements(By.XPath("/html/body/div[2]/div/div[4]/div/div/div[1]/div/div/div/ul/li[2]/div[3]"));
 
             driver.FindElement(By.LinkText("Kilépés")).Click();
 
