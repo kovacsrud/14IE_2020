@@ -30,6 +30,13 @@ namespace ConsoleApp1
 
             IList<IWebElement> feladatok = driver.FindElements(By.XPath("/html/body/div[2]/div/div[4]/div/div/div[1]/div/div/div/ul/li[2]/div[3]"));
 
+            for (int i = 0; i < feladatok.Count; i++)
+            {
+                Console.WriteLine(feladatok[i].Text);
+            }
+
+            Thread.Sleep(10000);
+
             driver.FindElement(By.LinkText("Kilépés")).Click();
 
             Thread.Sleep(5000);
