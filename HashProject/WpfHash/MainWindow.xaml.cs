@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,23 +40,23 @@ namespace WpfHash
         {
             if (radioMd5.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.MD5, adat);
+                textboxSzovegHash.Text = hash.CreateHash(HashType.MD5, adat);
             }
             else if (radioSha1.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA1, adat);
+                textboxSzovegHash.Text = hash.CreateHash(HashType.SHA1, adat);
             }
             else if (radioSha256.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA256, adat);
+                textboxSzovegHash.Text = hash.CreateHash(HashType.SHA256, adat);
             }
             else if (radioSha384.IsChecked == true)
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA384, adat);
+                textboxSzovegHash.Text = hash.CreateHash(HashType.SHA384, adat);
             }
             else
             {
-                textblockSzovegHash.Text = hash.CreateHash(HashType.SHA512, adat);
+                textboxSzovegHash.Text = hash.CreateHash(HashType.SHA512, adat);
             }
         }
 
@@ -77,6 +78,7 @@ namespace WpfHash
                 }
                 ujEleresiUt += fajl + ".hash";
                 Debug.WriteLine(ujEleresiUt);
+                File.WriteAllText(ujEleresiUt, textboxSzovegHash.Text);
             }
         }
     }

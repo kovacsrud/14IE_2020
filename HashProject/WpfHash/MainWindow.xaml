@@ -24,7 +24,7 @@
         </WrapPanel>
         <TextBox x:Name="textboxSzoveg" Width="500" Height="35"  FontSize="20" Grid.Row="1" />
         <Button x:Name="buttonFajlhash" Content="Fájl hash" Width="100" Height="30" FontSize="20" Grid.Row="2" Click="buttonFajlhash_Click"/>
-        <TextBox x:Name="textblockSzovegHash" MaxLines="3" TextWrapping="Wrap" MinLines="2" IsReadOnly="True" MinWidth="500"  FontSize="20"  HorizontalAlignment="Center" Grid.Row="4" />
+        <TextBox x:Name="textboxSzovegHash" MaxLines="3" TextWrapping="Wrap" MinLines="2" IsReadOnly="True" MinWidth="500"  FontSize="20"  HorizontalAlignment="Center" Grid.Row="4" />
         <Button x:Name="buttonHash" Content="Hash" Width="100" Height="30" FontSize="20" Grid.Row="5" Click="buttonHash_Click"/>
     </Grid>
 </Window>
