@@ -3,6 +3,7 @@ using HashCreator;
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Configuration;
+using NUnit.Framework.Interfaces;
 
 namespace HashCreatorTest
 {
@@ -53,6 +54,21 @@ namespace HashCreatorTest
             var sut = hash.CreateHash(HashType.SHA1, szoveg,true);
             Assert.AreEqual(elvart, sut);
             extTest.Log(Status.Pass,"SHA1 teszt sikeres");
+        }
+
+        [TearDown]
+        public static void CloseReport()
+        {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var stacktrace = TestContext.CurrentContext.Result.StackTrace;
+            var msg = TestContext.CurrentContext.Result.Message;
+
+            if (status==TestStatus.Failed)
+            {
+                extTest.Log(Status.Fail,"Hiba");
+                extTest.Log(Status.Fail,stacktrace);
+                extTest.Log(Status.Fail,msg);
+            }
         }
 
         [OneTimeTearDown]
