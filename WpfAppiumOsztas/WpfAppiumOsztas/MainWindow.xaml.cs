@@ -24,5 +24,20 @@ namespace WpfAppiumOsztas
         {
             InitializeComponent();
         }
+
+        private void buttonSzamol_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var a = Convert.ToDouble(textboxA.Text);
+                var b = Convert.ToDouble(textboxB.Text);
+                textblockEredmeny.Text = (a / b).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);                
+            }
+            
+        }
     }
 }
