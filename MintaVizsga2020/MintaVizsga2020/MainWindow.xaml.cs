@@ -70,5 +70,30 @@ namespace MintaVizsga2020
             }
             
         }
+
+        private void buttonUjadat_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var id = autolista.Autok.Max(x=>x.Id)+1;
+                var marka = textboxMarka.Text;
+                var tipus = textboxTipus.Text;
+                var evjarat = Convert.ToInt32(textboxEvjarat.Text);
+                var uzem = textboxUzem.Text;
+                var hengerurtartalom = Convert.ToInt32(textboxHengerurtartalom.Text);
+                var teljesitmeny = Convert.ToInt32(textboxTeljesitmeny.Text);
+                var futottkm = Convert.ToInt32(textboxFutottKm.Text);
+                var ar = Convert.ToInt32(textboxAr.Text);
+
+                Auto ujauto = new Auto(id,marka,tipus,evjarat,uzem,hengerurtartalom,teljesitmeny,futottkm,ar);
+                autolista.UjAuto(ujauto);
+                //házi feladat ->fájlba írás megvalósítása
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
