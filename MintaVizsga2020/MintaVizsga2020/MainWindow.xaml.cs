@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,47 @@ namespace MintaVizsga2020
             InitializeComponent();
             //Vészhelyzeti megoldás
             //autolista = new AutoLista("valami.txt",';',1);
+        }
+
+        private void buttonBetolt_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            
+            if (dialog.ShowDialog()==true)
+            {
+                autolista = new AutoLista(dialog.FileName,';',1);
+
+                Debug.WriteLine(autolista.Autok.Count);
+                tabKereses.IsEnabled = true;
+                tabUjadat.IsEnabled = true;
+            }
+        }
+
+        private void buttonKereses_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var also = Convert.ToInt32(textboxAlso.Text);
+                var felso = Convert.ToInt32(textboxFelso.Text);
+
+                var eredmeny = autolista.Autok.FindAll(x=>x.Ar>=also && x.Ar<=felso);
+                if (eredmeny.Count<1)
+                {
+                    throw new ArgumentException("Nincs a feltételeknek megfelelő elem!");
+                }
+
+                datagridEredmeny.ItemsSource = eredmeny;
+
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);                
+            }
+            
         }
     }
 }
