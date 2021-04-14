@@ -36,11 +36,11 @@ namespace WpfGamesData
                 try
                 {
                     gameData = new GameData(dialog.FileName, ';', 1);
-                    Debug.WriteLine(gameData.Games.Count);
+                    MessageBox.Show($"Sikeres betöltés, adatsorok száma:{gameData.Games.Count}", "Betöltés", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message,"Hiba!",MessageBoxButton.OK,MessageBoxImage.Error);                    
+                    MessageBox.Show(ex.StackTrace,"Hiba!",MessageBoxButton.OK,MessageBoxImage.Error);                    
                 }
                 
             }
