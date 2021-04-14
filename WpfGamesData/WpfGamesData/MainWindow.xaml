@@ -11,8 +11,17 @@
             <TabItem Header="Adatok betöltése">
                 <Button x:Name="buttonBetolt" Content="Fájl kiválasztása" Width="200" Height="30" Click="buttonBetolt_Click"/>
             </TabItem>
-            <TabItem Header="Szűrés platform szerint">
-                
+            <TabItem x:Name="tabPlatform" IsEnabled="False" Header="Szűrés platform szerint">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox x:Name="comboPlatform" Height="30" Width="200" SelectionChanged="comboPlatform_SelectionChanged" />
+                    <Button x:Name="buttonMentes" Content="Mentés" Width="200" Height="30" Grid.Row="1" IsEnabled="False" Click="buttonMentes_Click"/>
+                    <DataGrid x:Name="datagridPlatform" ColumnWidth="*" Grid.Row="2"/>
+                </Grid> 
             </TabItem>
         </TabControl>
     </Grid>

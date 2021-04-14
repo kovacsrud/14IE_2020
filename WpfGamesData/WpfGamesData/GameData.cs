@@ -24,5 +24,18 @@ namespace WpfGamesData
             }
         }
 
+        public List<string> GetPlatformData()
+        {
+            List<string> platforms = new List<string>();
+
+            var platformLookup = games.ToLookup(x=>x.Platform).OrderBy(x=>x.Key);
+
+            foreach (var i in platformLookup)
+            {
+                platforms.Add(i.Key);
+            }
+            return platforms;
+        }
+
     }
 }
