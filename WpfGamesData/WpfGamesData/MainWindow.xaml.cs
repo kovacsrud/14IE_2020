@@ -87,8 +87,9 @@ namespace WpfGamesData
         private void buttonKereses_Click(object sender, RoutedEventArgs e)
         {
             var jatekNev = textboxKereses.Text;
+            datagridKereses.ItemsSource = null;
             datagridKereses.Items.Clear();
-            var eredmeny = gameData.Games.FindAll(x=>x.Name==jatekNev);
+            var eredmeny = gameData.Games.FindAll(x=>x.Name.ToLower().Replace(" ","").Contains(jatekNev.ToLower().Replace(" ","")));
 
             if (eredmeny.Count==0)
             {
