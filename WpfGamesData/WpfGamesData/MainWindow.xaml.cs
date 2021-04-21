@@ -39,8 +39,10 @@ namespace WpfGamesData
                     gameData = new GameData(dialog.FileName, ';', 1);
                     MessageBox.Show($"Sikeres betöltés, adatsorok száma:{gameData.Games.Count}", "Betöltés", MessageBoxButton.OK, MessageBoxImage.Information);
                     comboPlatform.ItemsSource = gameData.GetPlatformData();
+                    comboboxKategoria.ItemsSource = gameData.GetKategoria();
                     tabPlatform.IsEnabled = true;
                     tabKereses.IsEnabled = true;
+                    tabStatisztika.IsEnabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -99,6 +101,23 @@ namespace WpfGamesData
                 datagridKereses.ItemsSource = eredmeny;
             }
             
+        }
+
+        private void comboboxKategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = comboboxKategoria.SelectedValue.ToString();
+            var eredmeny = gameData.Games.FindAll(x=>x.Genre==selected);
+            datagridKategoria.ItemsSource = eredmeny;
+            var minEredmeny = eredmeny.Min(x=>x.Global_sales);
+            textblockMin.Text = $"{minEredmeny} millió";
+            datagridMin.ItemsSource = eredmeny.FindAll(x=>x.Global_sales==minEredmeny);
+            var maxEredmeny = eredmeny.Max(x => x.Global_sales);
+            textblockMax.Text = $"{maxEredmeny} millió";
+            datagridMax.ItemsSource = eredmeny.FindAll(x => x.Global_sales == maxEredmeny);
+            var avgEredmeny = eredmeny.Average(x => x.Global_sales);
+            textblockAvg.Text = $"{avgEredmeny:0.00} millió";
+            var sumEredmeny = eredmeny.Sum(x => x.Global_sales);
+            textblockSum.Text = $"{sumEredmeny:0.00} millió";
         }
     }
 }

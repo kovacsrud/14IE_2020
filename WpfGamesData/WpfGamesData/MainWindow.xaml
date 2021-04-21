@@ -38,7 +38,7 @@
                     <DataGrid x:Name="datagridKereses" ColumnWidth="*" Grid.Row="1" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabStatisztika" Header="Játék kategória statisztika">
+            <TabItem x:Name="tabStatisztika" IsEnabled="False" Header="Játék kategória statisztika">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -54,7 +54,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
-                    <ComboBox x:Name="comboboxKategoria" Width="300" Height="30" FontSize="18" Grid.ColumnSpan="2" />
+                    <ComboBox x:Name="comboboxKategoria" Width="300" Height="30" FontSize="18" Grid.ColumnSpan="2" SelectionChanged="comboboxKategoria_SelectionChanged" />
                     <TextBlock Text="Min. eladás" FontSize="18" TextAlignment="Center" Grid.Row="1" />
                     <TextBlock x:Name="textblockMin" FontSize="18" TextAlignment="Center" Grid.Row="1" Grid.Column="1" />
                     <DataGrid x:Name="datagridMin" ColumnWidth="*" Grid.Row="2" Grid.ColumnSpan="2"/>
