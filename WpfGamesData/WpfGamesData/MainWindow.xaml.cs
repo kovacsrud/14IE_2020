@@ -40,6 +40,7 @@ namespace WpfGamesData
                     MessageBox.Show($"Sikeres betöltés, adatsorok száma:{gameData.Games.Count}", "Betöltés", MessageBoxButton.OK, MessageBoxImage.Information);
                     comboPlatform.ItemsSource = gameData.GetPlatformData();
                     tabPlatform.IsEnabled = true;
+                    tabKereses.IsEnabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -81,6 +82,22 @@ namespace WpfGamesData
                 }
                 
             }
+        }
+
+        private void buttonKereses_Click(object sender, RoutedEventArgs e)
+        {
+            var jatekNev = textboxKereses.Text;
+            datagridKereses.Items.Clear();
+            var eredmeny = gameData.Games.FindAll(x=>x.Name==jatekNev);
+
+            if (eredmeny.Count==0)
+            {
+                MessageBox.Show("Nincs a feltételnek megfelelő adat!");
+            } else
+            {
+                datagridKereses.ItemsSource = eredmeny;
+            }
+            
         }
     }
 }
